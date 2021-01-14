@@ -1,0 +1,49 @@
+name: Build-and-Test
+
+# Run this workflow every time a new commit pushed to your repository
+on: push
+
+jobs:
+  # Set the job key. The key is displayed as the job name
+  # when a job name is not provided
+  build:
+    # Name the Job
+    name: Build and test
+    # Set the type of machine to run on
+    runs-on: ubuntu-latest
+
+    steps:
+      # Checks out a copy of your repository on the ubuntu-latest machine
+      - name: Checkout code
+        uses: actions/checkout@v2
+        with:
+          ref: ${{ github.event.pull_request.head.ref }}
+          fetch-depth: 0
+
+      - name: Cache node modules
+        uses: actions/cache@v2
+        env:
+          cache-name: cache-node-modules
+        with:
+          # npm cache files are stored in `~/.npm` on Linux/macOS
+          path: ~/.npm
+          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-build-${{ env.cache-name }}-
+            ${{ runner.os }}-build-
+            ${{ runner.os }}-
+
+      # Gets the environment ready for node development
+      - name: Install Dependencies
+        uses: actions/setup-node@v1
+        with:
+          node-version: 15.x
+
+      - run: npm install
+      - run: npm run lint
+      - run: npm run format:check -- --base=origin/master
+      - run: npm run build
+      - run: npm run test
+      - run: npm run e2e
+
+# Add deploy job/step as needed
