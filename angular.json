@@ -1,0 +1,146 @@
+{
+  "version": 1,
+  "projects": {
+    "soccer-stats": {
+      "projectType": "application",
+      "root": "apps/soccer-stats",
+      "sourceRoot": "apps/soccer-stats/src",
+      "prefix": "big-co-soccer",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/apps/soccer-stats",
+            "index": "apps/soccer-stats/src/index.html",
+            "main": "apps/soccer-stats/src/main.ts",
+            "polyfills": "apps/soccer-stats/src/polyfills.ts",
+            "tsConfig": "apps/soccer-stats/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "apps/soccer-stats/src/favicon.ico",
+              "apps/soccer-stats/src/assets"
+            ],
+            "styles": ["apps/soccer-stats/src/styles.scss"],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/soccer-stats/src/environments/environment.ts",
+                  "with": "apps/soccer-stats/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "soccer-stats:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "soccer-stats:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "soccer-stats:build"
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "apps/soccer-stats/src/**/*.ts",
+              "apps/soccer-stats/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/apps/soccer-stats"],
+          "options": {
+            "jestConfig": "apps/soccer-stats/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "soccer-stats-e2e": {
+      "root": "apps/soccer-stats-e2e",
+      "sourceRoot": "apps/soccer-stats-e2e/src",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/soccer-stats-e2e/cypress.json",
+            "tsConfig": "apps/soccer-stats-e2e/tsconfig.e2e.json",
+            "devServerTarget": "soccer-stats:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "soccer-stats:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["apps/soccer-stats-e2e/**/*.{js,ts}"]
+          }
+        }
+      }
+    }
+  },
+  "cli": {
+    "defaultCollection": "@nrwl/angular"
+  },
+  "schematics": {
+    "@nrwl/angular": {
+      "application": {
+        "linter": "eslint"
+      },
+      "library": {
+        "linter": "eslint"
+      },
+      "storybook-configuration": {
+        "linter": "eslint"
+      }
+    },
+    "@nrwl/angular:application": {
+      "unitTestRunner": "jest",
+      "e2eTestRunner": "cypress"
+    },
+    "@nrwl/angular:library": {
+      "unitTestRunner": "jest"
+    },
+    "@nrwl/angular:component": {
+      "style": "scss"
+    }
+  },
+  "defaultProject": "soccer-stats"
+}
