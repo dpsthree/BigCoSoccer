@@ -14,7 +14,7 @@
           "error",
           {
             "type": "attribute",
-            "prefix": "big-co-soccer",
+            "prefix": "bsc",
             "style": "camelCase"
           }
         ],
@@ -22,7 +22,7 @@
           "error",
           {
             "type": "element",
-            "prefix": "big-co-soccer",
+            "prefix": "bsc",
             "style": "kebab-case"
           }
         ]

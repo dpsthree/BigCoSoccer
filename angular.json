@@ -5,7 +5,7 @@
       "projectType": "application",
       "root": "apps/soccer-stats",
       "sourceRoot": "apps/soccer-stats/src",
-      "prefix": "big-co-soccer",
+      "prefix": "bsc",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
