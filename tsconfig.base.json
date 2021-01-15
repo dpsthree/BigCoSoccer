@@ -20,6 +20,9 @@
       ],
       "@bsc/soccer-stats/feature-player-stats": [
         "libs/soccer-stats/feature-player-stats/src/index.ts"
+      ],
+      "@bsc/shared/data-access-auth": [
+        "libs/shared/data-access-auth/src/index.ts"
       ]
     },
     "forceConsistentCasingInFileNames": true,
