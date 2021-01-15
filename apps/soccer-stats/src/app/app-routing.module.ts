@@ -4,6 +4,13 @@ import { RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   { path: '', redirectTo: 'games', pathMatch: 'full' },
   {
+    path: 'login',
+    loadChildren: () =>
+      import('@bsc/soccer-stats/feature-login').then(
+        m => m.SoccerStatsFeatureLoginModule
+      )
+  },
+  {
     path: 'games',
     loadChildren: () =>
       import('@bsc/soccer-stats/feature-game-stats').then(
