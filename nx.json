@@ -23,6 +23,7 @@
     },
     "soccer-stats-feature-game-stats": { "tags": [] },
     "soccer-stats-feature-player-stats": { "tags": [] },
-    "shared-data-access-auth": { "tags": [] }
+    "shared-data-access-auth": { "tags": [] },
+    "shared-data-access-authz": { "tags": [] }
   }
 }

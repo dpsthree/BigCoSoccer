@@ -189,6 +189,31 @@
           }
         }
       }
+    },
+    "shared-data-access-authz": {
+      "projectType": "library",
+      "root": "libs/shared/data-access-authz",
+      "sourceRoot": "libs/shared/data-access-authz/src",
+      "prefix": "bsc",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/shared/data-access-authz/src/**/*.ts",
+              "libs/shared/data-access-authz/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/shared/data-access-authz"],
+          "options": {
+            "jestConfig": "libs/shared/data-access-authz/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
     }
   },
   "cli": {

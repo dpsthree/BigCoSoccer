@@ -23,6 +23,9 @@
       ],
       "@bsc/shared/data-access-auth": [
         "libs/shared/data-access-auth/src/index.ts"
+      ],
+      "@bsc/shared/data-access-authz": [
+        "libs/shared/data-access-authz/src/index.ts"
       ]
     },
     "forceConsistentCasingInFileNames": true,
