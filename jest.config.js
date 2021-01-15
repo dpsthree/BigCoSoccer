@@ -7,6 +7,7 @@ module.exports = {
     '<rootDir>/libs/shared/data-access-authz',
     '<rootDir>/libs/soccer-stats/feature-login',
     '<rootDir>/libs/soccer-stats/data-access-guards',
-    '<rootDir>/libs/shared/ui-components'
+    '<rootDir>/libs/shared/ui-components',
+    '<rootDir>/libs/soccer-stats/data-access-log-in-out'
   ]
 };

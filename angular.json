@@ -289,6 +289,31 @@
           }
         }
       }
+    },
+    "soccer-stats-data-access-log-in-out": {
+      "projectType": "library",
+      "root": "libs/soccer-stats/data-access-log-in-out",
+      "sourceRoot": "libs/soccer-stats/data-access-log-in-out/src",
+      "prefix": "bsc",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/soccer-stats/data-access-log-in-out/src/**/*.ts",
+              "libs/soccer-stats/data-access-log-in-out/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/soccer-stats/data-access-log-in-out"],
+          "options": {
+            "jestConfig": "libs/soccer-stats/data-access-log-in-out/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
     }
   },
   "cli": {

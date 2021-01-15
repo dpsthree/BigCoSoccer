@@ -1,1 +1,6 @@
-<p>login-form works!</p>
+<form [formGroup]="loginForm">
+  <label>Username: <input type="text" formControlName="username"></label>
+  <label>Password: <input type="password" formControlName="password"></label>
+</form>
+<button [disabled]="!loginForm.valid" (click)="login()">Login</button>
+<p>{{msg}}</p>
