@@ -5,5 +5,9 @@ export const environment: Environment = {
   authenticationConfig: {
     authenticationServerAddress: 'some auth server',
     dev: false
+  },
+  authorizationConfig: {
+    authorizationServerAddress: 'some authz server',
+    dev: false
   }
 };
