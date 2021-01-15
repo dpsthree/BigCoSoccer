@@ -1,7 +1,9 @@
 <!-- This block should eventually be moved into a UI lib -->
-<ng-container *ngIf="currentUser | async as user">
-  <span>{{user.displayName}}</span>
-  <button (click)="logout()">Logout</button>
+<ng-container *transloco="let t; read: 'soccer-stats.app'">
+  <ng-container *ngIf="currentUser | async as user">
+    <span>{{ user.displayName }}</span>
+    <button (click)="logout()">{{t('logout')}}</button>
+  </ng-container>
+  <h1>{{t('title')}}</h1>
+  <router-outlet></router-outlet>
 </ng-container>
-<h1>App shell</h1>
-<router-outlet></router-outlet>
