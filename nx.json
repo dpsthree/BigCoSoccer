@@ -25,6 +25,7 @@
     "soccer-stats-feature-player-stats": { "tags": [] },
     "shared-data-access-auth": { "tags": [] },
     "shared-data-access-authz": { "tags": [] },
-    "soccer-stats-feature-login": { "tags": [] }
+    "soccer-stats-feature-login": { "tags": [] },
+    "soccer-stats-data-access-guards": { "tags": [] }
   }
 }

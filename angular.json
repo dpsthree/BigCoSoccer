@@ -239,6 +239,31 @@
           }
         }
       }
+    },
+    "soccer-stats-data-access-guards": {
+      "projectType": "library",
+      "root": "libs/soccer-stats/data-access-guards",
+      "sourceRoot": "libs/soccer-stats/data-access-guards/src",
+      "prefix": "bsc",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/soccer-stats/data-access-guards/src/**/*.ts",
+              "libs/soccer-stats/data-access-guards/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/soccer-stats/data-access-guards"],
+          "options": {
+            "jestConfig": "libs/soccer-stats/data-access-guards/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
     }
   },
   "cli": {

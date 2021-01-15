@@ -29,6 +29,9 @@
       ],
       "@bsc/soccer-stats/feature-login": [
         "libs/soccer-stats/feature-login/src/index.ts"
+      ],
+      "@bsc/soccer-stats/data-access-guards": [
+        "libs/soccer-stats/data-access-guards/src/index.ts"
       ]
     },
     "forceConsistentCasingInFileNames": true,
