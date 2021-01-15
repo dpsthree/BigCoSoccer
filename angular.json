@@ -264,6 +264,31 @@
           }
         }
       }
+    },
+    "shared-ui-components": {
+      "projectType": "library",
+      "root": "libs/shared/ui-components",
+      "sourceRoot": "libs/shared/ui-components/src",
+      "prefix": "bsc",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/shared/ui-components/src/**/*.ts",
+              "libs/shared/ui-components/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/shared/ui-components"],
+          "options": {
+            "jestConfig": "libs/shared/ui-components/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
     }
   },
   "cli": {

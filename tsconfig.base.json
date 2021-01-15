@@ -32,7 +32,8 @@
       ],
       "@bsc/soccer-stats/data-access-guards": [
         "libs/soccer-stats/data-access-guards/src/index.ts"
-      ]
+      ],
+      "@bsc/shared/ui-components": ["libs/shared/ui-components/src/index.ts"]
     },
     "forceConsistentCasingInFileNames": true,
     "noFallthroughCasesInSwitch": true,

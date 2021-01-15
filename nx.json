@@ -26,6 +26,7 @@
     "shared-data-access-auth": { "tags": [] },
     "shared-data-access-authz": { "tags": [] },
     "soccer-stats-feature-login": { "tags": [] },
-    "soccer-stats-data-access-guards": { "tags": [] }
+    "soccer-stats-data-access-guards": { "tags": [] },
+    "shared-ui-components": { "tags": [] }
   }
 }
