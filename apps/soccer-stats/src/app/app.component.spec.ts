@@ -2,6 +2,8 @@ import { TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
 
+// Test the ability to create the component
+// Component should have no functionality.
 describe('AppComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({

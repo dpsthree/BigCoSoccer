@@ -1,1 +1,1 @@
-export * from './lib/soccer-stats-data-access-guards.module';
+export * from './lib/guards.service';
