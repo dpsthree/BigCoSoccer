@@ -214,6 +214,31 @@
           }
         }
       }
+    },
+    "soccer-stats-feature-login": {
+      "projectType": "library",
+      "root": "libs/soccer-stats/feature-login",
+      "sourceRoot": "libs/soccer-stats/feature-login/src",
+      "prefix": "bsc",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/soccer-stats/feature-login/src/**/*.ts",
+              "libs/soccer-stats/feature-login/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/soccer-stats/feature-login"],
+          "options": {
+            "jestConfig": "libs/soccer-stats/feature-login/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
     }
   },
   "cli": {

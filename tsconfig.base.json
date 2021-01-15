@@ -26,6 +26,9 @@
       ],
       "@bsc/shared/data-access-authz": [
         "libs/shared/data-access-authz/src/index.ts"
+      ],
+      "@bsc/soccer-stats/feature-login": [
+        "libs/soccer-stats/feature-login/src/index.ts"
       ]
     },
     "forceConsistentCasingInFileNames": true,
