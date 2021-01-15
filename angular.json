@@ -114,6 +114,56 @@
           }
         }
       }
+    },
+    "soccer-stats-feature-game-stats": {
+      "projectType": "library",
+      "root": "libs/soccer-stats/feature-game-stats",
+      "sourceRoot": "libs/soccer-stats/feature-game-stats/src",
+      "prefix": "bsc",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/soccer-stats/feature-game-stats/src/**/*.ts",
+              "libs/soccer-stats/feature-game-stats/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/soccer-stats/feature-game-stats"],
+          "options": {
+            "jestConfig": "libs/soccer-stats/feature-game-stats/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "soccer-stats-feature-player-stats": {
+      "projectType": "library",
+      "root": "libs/soccer-stats/feature-player-stats",
+      "sourceRoot": "libs/soccer-stats/feature-player-stats/src",
+      "prefix": "bsc",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/soccer-stats/feature-player-stats/src/**/*.ts",
+              "libs/soccer-stats/feature-player-stats/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/soccer-stats/feature-player-stats"],
+          "options": {
+            "jestConfig": "libs/soccer-stats/feature-player-stats/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
     }
   },
   "cli": {

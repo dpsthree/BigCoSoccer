@@ -14,7 +14,14 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {},
+    "paths": {
+      "@bsc/soccer-stats/feature-game-stats": [
+        "libs/soccer-stats/feature-game-stats/src/index.ts"
+      ],
+      "@bsc/soccer-stats/feature-player-stats": [
+        "libs/soccer-stats/feature-player-stats/src/index.ts"
+      ]
+    },
     "forceConsistentCasingInFileNames": true,
     "noFallthroughCasesInSwitch": true,
     "noImplicitReturns": true,
