@@ -28,6 +28,7 @@
     "soccer-stats-feature-login": { "tags": [] },
     "soccer-stats-data-access-guards": { "tags": [] },
     "shared-ui-components": { "tags": [] },
-    "soccer-stats-data-access-log-in-out": { "tags": [] }
+    "soccer-stats-data-access-log-in-out": { "tags": [] },
+    "shared-util-translation-config": { "tags": [] }
   }
 }

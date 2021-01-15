@@ -36,6 +36,9 @@
       "@bsc/shared/ui-components": ["libs/shared/ui-components/src/index.ts"],
       "@bsc/soccer-stats/data-access-log-in-out": [
         "libs/soccer-stats/data-access-log-in-out/src/index.ts"
+      ],
+      "@bsc/shared/util-translation-config": [
+        "libs/shared/util-translation-config/src/index.ts"
       ]
     },
     "forceConsistentCasingInFileNames": true,

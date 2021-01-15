@@ -314,6 +314,31 @@
           }
         }
       }
+    },
+    "shared-util-translation-config": {
+      "projectType": "library",
+      "root": "libs/shared/util-translation-config",
+      "sourceRoot": "libs/shared/util-translation-config/src",
+      "prefix": "bsc",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/shared/util-translation-config/src/**/*.ts",
+              "libs/shared/util-translation-config/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/shared/util-translation-config"],
+          "options": {
+            "jestConfig": "libs/shared/util-translation-config/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
     }
   },
   "cli": {
