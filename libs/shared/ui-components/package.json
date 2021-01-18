@@ -1,0 +1,11 @@
+{
+  "name": "@bsc/shared-ui-components",
+  "version": "0.0.0",
+  "license": "MIT",
+  "i18n": [
+    {
+      "scope": "sharedUiComponents",
+      "path": "./assets/i18n"
+    }
+  ]
+}

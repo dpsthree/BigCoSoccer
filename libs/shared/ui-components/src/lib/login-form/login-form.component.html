@@ -1,6 +1,14 @@
-<form [formGroup]="loginForm">
-  <label>Username: <input type="text" formControlName="username"></label>
-  <label>Password: <input type="password" formControlName="password"></label>
-</form>
-<button [disabled]="!loginForm.valid" (click)="login()">Login</button>
-<p>{{msg}}</p>
+<ng-container *transloco="let t; read: 'sharedUiComponents.loginForm'">
+  <form [formGroup]="loginForm">
+    <label>
+      {{ t('username') }}: <input type="text" formControlName="username" />
+    </label>
+    <label>
+      {{ t('password') }}: <input type="password" formControlName="password" />
+    </label>
+  </form>
+  <button [disabled]="!loginForm.valid" (click)="login()">
+    {{ t('login') }}
+  </button>
+  <p>{{ msg }}</p>
+</ng-container>

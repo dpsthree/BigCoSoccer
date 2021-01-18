@@ -54,7 +54,8 @@ export class SharedUtilTranslationConfigModule {
         {
           provide: TRANSLOCO_LOADER,
           useClass: HttpLoader
-        },{
+        },
+        {
           provide: TranslationPath,
           useValue: translationPath
         }
@@ -62,19 +63,14 @@ export class SharedUtilTranslationConfigModule {
     };
   }
   static forChild(
-    scopeName: string,
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    loader: any
+    scopeName: string
   ): ModuleWithProviders<SharedUtilTranslationConfigModule> {
     return {
       ngModule: SharedUtilTranslationConfigModule,
       providers: [
         {
           provide: TRANSLOCO_SCOPE,
-          useValue: {
-            scope: scopeName,
-            loader
-          }
+          useValue: scopeName
         }
       ]
     };
