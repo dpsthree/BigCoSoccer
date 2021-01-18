@@ -12,6 +12,8 @@ export class HttpLoader implements TranslocoLoader {
   ) {}
 
   getTranslation(langPath: string) {
-    return this.http.get<Translation>(`${this.translationPath}/${langPath}.json`);
+    return this.http.get<Translation>(
+      `${this.translationPath}/${langPath}.json`
+    );
   }
 }

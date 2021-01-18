@@ -2,8 +2,8 @@
 <ng-container *transloco="let t; read: 'soccer-stats.app'">
   <ng-container *ngIf="currentUser | async as user">
     <span>{{ user.displayName }}</span>
-    <button (click)="logout()">{{t('logout')}}</button>
+    <button (click)="logout()">{{ t('logout') }}</button>
   </ng-container>
-  <h1>{{t('title')}}</h1>
+  <h1>{{ t('title') }}</h1>
   <router-outlet></router-outlet>
 </ng-container>
