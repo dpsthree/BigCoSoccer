@@ -1,9 +1,48 @@
-<!-- This block should eventually be moved into a UI lib -->
 <ng-container *transloco="let t; read: 'soccer-stats.app'">
-  <ng-container *ngIf="currentUser | async as user">
-    <span>{{ user.displayName }}</span>
-    <button (click)="logout()">{{ t('logout') }}</button>
-  </ng-container>
-  <h1>{{ t('title') }}</h1>
-  <router-outlet></router-outlet>
+  <!-- This block should eventually be moved into a UI lib -->
+  <mat-toolbar color="primary" class="mat-elevation-z2">
+    <ng-container>
+      <mat-toolbar-row>
+        <a href="https://oasisdigital.com">
+          <img
+            class="logo"
+            src="assets/od-logo-white.svg"
+            alt="Oasis Digital Logo"
+          />
+        </a>
+        <h1>{{ t('title') }}</h1>
+        <div class="toolbar-spacer"></div>
+        <ng-container *ngIf="currentUser | async as user">
+          <span class="username">{{ user?.displayName }}</span>
+          <button mat-raised-button (click)="logout()">
+            {{ t('logout') }}
+          </button>
+        </ng-container>
+      </mat-toolbar-row>
+    </ng-container>
+    <ng-content></ng-content>
+  </mat-toolbar>
+  <mat-sidenav-container>
+    <mat-sidenav opened *ngIf="currentUser | async as user" mode="side">
+      <mat-nav-list>
+        <a
+          mat-list-item
+          routerLink="/players"
+        >
+          {{ t('routes.players') }}
+        </a>
+        <a
+          mat-list-item
+          routerLink="/games"
+        >
+          {{ t('routes.games') }}
+        </a>
+      </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <div class="page-layout">
+        <router-outlet></router-outlet>
+      </div>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
 </ng-container>

@@ -1,13 +1,28 @@
 <ng-container *transloco="let t; scope: 'sharedUiComponents' read: 'sharedUiComponents.loginForm'">
   <form [formGroup]="loginForm">
-    <label>
-      {{ t('username') }}: <input type="text" formControlName="username" />
-    </label>
-    <label>
-      {{ t('password') }}: <input type="password" formControlName="password" />
-    </label>
+    <mat-form-field appearance="outline">
+      <mat-label>{{ t('username') }}</mat-label>
+      <input
+        formControlName="username"
+        matInput
+        placeholder="{{ t('username') }}"
+      />
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>{{ t('password') }}</mat-label>
+      <input
+        formControlName="password"
+        matInput
+        placeholder="{{ t('password') }}"
+      />
+    </mat-form-field>
   </form>
-  <button [disabled]="!loginForm.valid" (click)="login()">
+  <button
+    mat-raised-button
+    color="primary"
+    [disabled]="!loginForm.valid"
+    (click)="login()"
+  >
     {{ t('login') }}
   </button>
   <p>{{ msg }}</p>

@@ -20,7 +20,7 @@
               "apps/soccer-stats/src/favicon.ico",
               "apps/soccer-stats/src/assets"
             ],
-            "styles": ["apps/soccer-stats/src/styles.scss"],
+            "styles": ["./node_modules/@angular/material/prebuilt-themes/indigo-pink.css", "apps/soccer-stats/src/styles.scss"],
             "scripts": []
           },
           "configurations": {

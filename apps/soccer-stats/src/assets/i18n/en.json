@@ -2,7 +2,11 @@
   "soccer-stats": {
     "app": {
       "logout": "Logout",
-      "title": "App shell"
+      "title": "App shell",
+      "routes": {
+        "players": "Players",
+        "games": "Games"
+      }
     }
   }
 }
