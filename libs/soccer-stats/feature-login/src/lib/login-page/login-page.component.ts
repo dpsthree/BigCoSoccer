@@ -14,13 +14,13 @@ export class LoginPageComponent {
   constructor(private logInOut: LogInOutService) {}
 
   async login(credentials: Credentials) {
-    this.msg = 'logging in...';
+    this.msg = 'loginPending';
 
     try {
       await this.logInOut.login(credentials.username, credentials.password);
-      this.msg = 'Welcome';
+      this.msg = 'loginSuccessful';
     } catch (err) {
-      this.msg = 'Failed to login';
+      this.msg = 'loginFailed';
     }
   }
 }

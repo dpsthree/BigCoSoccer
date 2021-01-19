@@ -1,0 +1,11 @@
+{
+  "name": "@bsc/soccer-stats/feature-login",
+  "version": "0.0.0",
+  "license": "MIT",
+  "i18n": [
+    {
+      "scope": "featureLogin",
+      "path": "./assets/i18n"
+    }
+  ]
+}

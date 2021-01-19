@@ -1,4 +1,4 @@
-<ng-container *transloco="let t; read: 'sharedUiComponents.loginForm'">
+<ng-container *transloco="let t; scope: 'sharedUiComponents' read: 'sharedUiComponents.loginForm'">
   <form [formGroup]="loginForm">
     <label>
       {{ t('username') }}: <input type="text" formControlName="username" />

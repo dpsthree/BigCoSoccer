@@ -1,0 +1,5 @@
+{
+  "loginPending": "logging in...",
+  "loginFailed": "Failed to login",
+  "loginSuccessful": "Welcome!"
+}

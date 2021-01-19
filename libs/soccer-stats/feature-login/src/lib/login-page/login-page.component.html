@@ -1,1 +1,3 @@
-<bsc-login-form [msg]="msg" (loginRequest)="login($event)"></bsc-login-form>
+<ng-container *transloco="let t; read: 'featureLogin'">
+  <bsc-login-form [msg]="(msg && t(msg)) || ''" (loginRequest)="login($event)"></bsc-login-form>
+</ng-container>
