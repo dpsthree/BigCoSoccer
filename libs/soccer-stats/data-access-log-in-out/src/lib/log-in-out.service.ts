@@ -17,13 +17,12 @@ export class LogInOutService {
   ) {}
 
   async login(username: string, password: string) {
-    await this.authentication
-      .login(username, password);
+    await this.authentication.login(username, password);
     return this.router.navigate(['/']);
   }
 
   logout() {
-    this.authentication.logout()
+    this.authentication.logout();
     return this.router.navigate(['/login']);
   }
 }

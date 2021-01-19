@@ -1,5 +1,11 @@
 import { Component } from '@angular/core';
-import { AuthenticationService } from '@bsc/shared/data-access-auth';
+import { select } from '@ngrx/store';
+import { Store } from '@ngrx/store';
+
+import {
+  AppState,
+  getCurrentUser
+} from '@bsc/soccer-stats/data-access-app-state';
 import { LogInOutService } from '@bsc/soccer-stats/data-access-log-in-out';
 
 @Component({
@@ -8,10 +14,10 @@ import { LogInOutService } from '@bsc/soccer-stats/data-access-log-in-out';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  currentUser = this.authenticationService.currentUser;
+  currentUser = this.store.pipe(select(getCurrentUser));
 
   constructor(
-    private authenticationService: AuthenticationService,
+    private store: Store<AppState>,
     private logInOut: LogInOutService
   ) {}
 

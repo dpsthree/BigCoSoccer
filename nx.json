@@ -16,7 +16,10 @@
     }
   },
   "projects": {
-    "soccer-stats": { "tags": [] },
+    "soccer-stats": {
+      "tags": [],
+      "implicitDependencies": ["shared-ui-components"]
+    },
     "soccer-stats-e2e": {
       "tags": [],
       "implicitDependencies": ["soccer-stats"]
@@ -29,6 +32,7 @@
     "soccer-stats-data-access-guards": { "tags": [] },
     "shared-ui-components": { "tags": [] },
     "soccer-stats-data-access-log-in-out": { "tags": [] },
-    "shared-util-translation-config": { "tags": [] }
+    "shared-util-translation-config": { "tags": [] },
+    "soccer-stats-data-access-app-state": { "tags": [] }
   }
 }

@@ -11,9 +11,7 @@
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
             "stylePreprocessorOptions": {
-              "includePaths": [
-                "libs/shared/ui-components/src/lib"
-              ]
+              "includePaths": ["libs/shared/ui-components/src/lib"]
             },
             "outputPath": "dist/apps/soccer-stats",
             "index": "apps/soccer-stats/src/index.html",
@@ -25,7 +23,10 @@
               "apps/soccer-stats/src/favicon.ico",
               "apps/soccer-stats/src/assets"
             ],
-            "styles": ["./node_modules/@angular/material/prebuilt-themes/indigo-pink.css", "apps/soccer-stats/src/styles.scss"],
+            "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
+              "apps/soccer-stats/src/styles.scss"
+            ],
             "scripts": []
           },
           "configurations": {
@@ -340,6 +341,31 @@
           "outputs": ["coverage/libs/shared/util-translation-config"],
           "options": {
             "jestConfig": "libs/shared/util-translation-config/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "soccer-stats-data-access-app-state": {
+      "projectType": "library",
+      "root": "libs/soccer-stats/data-access-app-state",
+      "sourceRoot": "libs/soccer-stats/data-access-app-state/src",
+      "prefix": "bsc",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/soccer-stats/data-access-app-state/src/**/*.ts",
+              "libs/soccer-stats/data-access-app-state/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/soccer-stats/data-access-app-state"],
+          "options": {
+            "jestConfig": "libs/soccer-stats/data-access-app-state/jest.config.js",
             "passWithNoTests": true
           }
         }

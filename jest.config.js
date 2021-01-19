@@ -9,6 +9,7 @@ module.exports = {
     '<rootDir>/libs/soccer-stats/data-access-guards',
     '<rootDir>/libs/shared/ui-components',
     '<rootDir>/libs/soccer-stats/data-access-log-in-out',
-    '<rootDir>/libs/shared/util-translation-config'
+    '<rootDir>/libs/shared/util-translation-config',
+    '<rootDir>/libs/soccer-stats/data-access-app-state'
   ]
 };

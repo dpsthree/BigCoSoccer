@@ -39,6 +39,9 @@
       ],
       "@bsc/shared/util-translation-config": [
         "libs/shared/util-translation-config/src/index.ts"
+      ],
+      "@bsc/soccer-stats/data-access-app-state": [
+        "libs/soccer-stats/data-access-app-state/src/index.ts"
       ]
     },
     "forceConsistentCasingInFileNames": true,
