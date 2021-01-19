@@ -1,5 +1,12 @@
+// It should be this features choice
+// to pick the styling of its children
+// unfortunately, the current tooling limitations
+// don't make it easy
+// @use 'libs/shared/ui-components/src/lib/styles/login-form';
+
 bsc-login-form {
   display: grid;
   justify-content: center;
   align-content: center;
 }
+

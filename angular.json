@@ -10,6 +10,11 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "libs/shared/ui-components/src/lib"
+              ]
+            },
             "outputPath": "dist/apps/soccer-stats",
             "index": "apps/soccer-stats/src/index.html",
             "main": "apps/soccer-stats/src/main.ts",
