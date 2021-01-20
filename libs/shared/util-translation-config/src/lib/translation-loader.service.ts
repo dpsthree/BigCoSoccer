@@ -4,7 +4,7 @@ import { Translation, TranslocoLoader } from '@ngneat/transloco';
 
 import {
   loadWithRetry,
-  MaterialNotificationService,
+  NotificationService,
   waitForResults,
   whenErrored
 } from '@bsc/shared/util-async-helpers';
@@ -16,7 +16,7 @@ import { shareReplay } from 'rxjs/operators';
 export class HttpLoader implements TranslocoLoader {
   constructor(
     private http: HttpClient,
-    private notificationService: MaterialNotificationService,
+    private notificationService: NotificationService,
     @Inject(TranslationPath) private translationPath: string
   ) {}
 

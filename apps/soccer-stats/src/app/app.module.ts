@@ -17,6 +17,7 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AppMaterialDepsModule } from './app-material-deps.module';
 import { AppStartupService } from './app-startup.service';
+import { MaterialNotificationService, SharedUtilAsyncHelpersModule } from '@bsc/shared/util-async-helpers';
 
 @NgModule({
   declarations: [AppComponent],
@@ -38,6 +39,7 @@ import { AppStartupService } from './app-startup.service';
     EffectsModule.forRoot([]),
     !environment.production ? StoreDevtoolsModule.instrument() : [],
     AppMaterialDepsModule,
+    SharedUtilAsyncHelpersModule.forRoot(MaterialNotificationService),
     SharedDataAccessAuthModule.forRoot(environment.authenticationConfig),
     SharedDataAccessAuthzModule.forRoot(environment.authorizationConfig),
     SharedUtilTranslationConfigModule.forRoot(
