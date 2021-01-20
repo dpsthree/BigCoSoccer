@@ -17,7 +17,10 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AppMaterialDepsModule } from './app-material-deps.module';
 import { AppStartupService } from './app-startup.service';
-import { MaterialNotificationService, SharedUtilAsyncHelpersModule } from '@bsc/shared/util-async-helpers';
+import {
+  MaterialNotificationService,
+  SharedUtilAsyncHelpersModule
+} from '@bsc/shared/util-async-helpers';
 
 @NgModule({
   declarations: [AppComponent],
@@ -25,17 +28,14 @@ import { MaterialNotificationService, SharedUtilAsyncHelpersModule } from '@bsc/
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
-    StoreModule.forRoot(
-      reducers,
-      {
-        runtimeChecks: {
-          strictStateImmutability: true,
-          strictStateSerializability: true,
-          strictActionImmutability: true,
-          strictActionSerializability: true
-        }
+    StoreModule.forRoot(reducers, {
+      runtimeChecks: {
+        strictStateImmutability: true,
+        strictStateSerializability: true,
+        strictActionImmutability: true,
+        strictActionSerializability: true
       }
-    ),
+    }),
     EffectsModule.forRoot([]),
     !environment.production ? StoreDevtoolsModule.instrument() : [],
     AppMaterialDepsModule,
