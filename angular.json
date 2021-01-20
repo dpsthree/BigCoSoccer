@@ -370,6 +370,31 @@
           }
         }
       }
+    },
+    "shared-util-async-helpers": {
+      "projectType": "library",
+      "root": "libs/shared/util-async-helpers",
+      "sourceRoot": "libs/shared/util-async-helpers/src",
+      "prefix": "bsc",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/shared/util-async-helpers/src/**/*.ts",
+              "libs/shared/util-async-helpers/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/shared/util-async-helpers"],
+          "options": {
+            "jestConfig": "libs/shared/util-async-helpers/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
     }
   },
   "cli": {

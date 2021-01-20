@@ -42,6 +42,9 @@
       ],
       "@bsc/soccer-stats/data-access-app-state": [
         "libs/soccer-stats/data-access-app-state/src/index.ts"
+      ],
+      "@bsc/shared/util-async-helpers": [
+        "libs/shared/util-async-helpers/src/index.ts"
       ]
     },
     "forceConsistentCasingInFileNames": true,
