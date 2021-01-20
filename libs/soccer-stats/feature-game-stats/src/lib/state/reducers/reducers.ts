@@ -1,8 +1,8 @@
 import { ActionReducerMap } from '@ngrx/store';
 
 import { GameStatsState } from '../../types';
-import { countReducer } from './count.reducer';
+import { gamesReducer } from './games.reducer';
 
 export const gameStatsReducers: ActionReducerMap<GameStatsState> = {
-  count: countReducer
+  games: gamesReducer
 };

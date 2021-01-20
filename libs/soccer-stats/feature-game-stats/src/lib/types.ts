@@ -1,3 +1,11 @@
+export interface Game {
+  id: string;
+  name: string;
+  date: string;
+  location: string;
+  players: string[];
+}
+
 export interface GameStatsState {
-  count: number;
+  games: Game[];
 }

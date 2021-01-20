@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
 import { select, Store } from '@ngrx/store';
+import { MatDialog } from '@angular/material/dialog';
 
 import { GameStatsState } from '../types';
-import { getCount } from '../state/selectors/count.selectors';
-import { incrementCount } from '../state/actions/count.actions';
+import { getGames } from '../state/selectors/games.selectors';
+import { AddGameComponent } from '../add-game/add-game.component';
 
 @Component({
   selector: 'bsc-game-stats-page',
@@ -11,10 +12,14 @@ import { incrementCount } from '../state/actions/count.actions';
   styleUrls: ['./game-stats-page.component.scss']
 })
 export class GameStatsPageComponent {
-  count = this.store.pipe(select(getCount));
-  constructor(private store: Store<GameStatsState>) {}
+  games = this.store.pipe(select(getGames));
 
-  click(){
-    this.store.dispatch(incrementCount());
+  constructor(
+    private store: Store<GameStatsState>,
+    private dialog: MatDialog
+  ) {}
+
+  addGame() {
+    this.dialog.open(AddGameComponent);
   }
 }

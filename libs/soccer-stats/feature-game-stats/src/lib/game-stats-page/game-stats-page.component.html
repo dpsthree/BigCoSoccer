@@ -1,3 +1,18 @@
-<p>game-stats-page works!</p>
-<button (click)="click()">Click</button>
-{{count | async}}
+<div>
+  <mat-nav-list class="mat-elevation-z2">
+    <a
+      *ngFor="let game of games | async"
+      [routerLink]="game.id"
+      mat-list-item
+      e2e="game-list-item"
+    >
+      {{ game.name }}
+    </a>
+  </mat-nav-list>
+  <button mat-mini-fab (click)="addGame()" e2e="add-game">
+    <mat-icon>add</mat-icon>
+  </button>
+</div>
+<div>
+  <router-outlet></router-outlet>
+</div>
