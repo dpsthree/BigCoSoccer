@@ -16,7 +16,7 @@ import { environment } from '../environments/environment';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AppMaterialDepsModule } from './app-material-deps.module';
-import { AppStartupService } from './app.startup.service';
+import { AppStartupService } from './app-startup.service';
 
 @NgModule({
   declarations: [AppComponent],

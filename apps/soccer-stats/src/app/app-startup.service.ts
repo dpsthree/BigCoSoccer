@@ -1,8 +1,8 @@
+import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
 
 import { AuthenticationService } from '@bsc/shared/data-access-auth';
 import { userChange } from '@bsc/soccer-stats/data-access-app-state';
-import { Injectable } from '@angular/core';
 
 @Injectable({ providedIn: 'root' })
 export class AppStartupService {
