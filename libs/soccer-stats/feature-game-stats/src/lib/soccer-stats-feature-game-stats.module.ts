@@ -3,12 +3,15 @@ import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { StoreModule } from '@ngrx/store';
 
+import { featureSelectorName, selectedGameIdRouteParamName } from './constants';
+
 import { GameStatsPageComponent } from './game-stats-page/game-stats-page.component';
-import { gameStatsReducers } from './state/reducers/reducers';
-import { selectedGameIdRouteParamName } from './constants';
+import { gameStatsReducer } from './state/reducers/reducers';
 import { GameDetailComponent } from './game-detail/game-detail.component';
 import { MaterialDepsModule } from './material-deps.module';
 import { AddGameComponent } from './add-game/add-game.component';
+import { GamesEffects } from './state/effects/games.effects';
+import { EffectsModule } from '@ngrx/effects';
 
 const routes: Routes = [
   {
@@ -27,7 +30,8 @@ const routes: Routes = [
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
-    StoreModule.forFeature('games', gameStatsReducers),
+    StoreModule.forFeature(featureSelectorName, gameStatsReducer),
+    EffectsModule.forFeature([GamesEffects]),
     MaterialDepsModule
   ],
   declarations: [GameStatsPageComponent, GameDetailComponent, AddGameComponent],

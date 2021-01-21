@@ -1,5 +1,6 @@
-import { GameStatsState } from '../types';
+import { gameFetchStatus, GameStatsState } from '../types';
 
 export const initialState: GameStatsState = {
-  games: []
+  games: [],
+  gameFetchStatus: gameFetchStatus.gamesLoading
 };

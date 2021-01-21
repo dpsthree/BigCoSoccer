@@ -6,6 +6,14 @@ export interface Game {
   players: string[];
 }
 
+export enum gameFetchStatus {
+  gamesLoading = 'gamesLoading',
+  gamesRetrying = 'gamesRetrying',
+  gamesFailed = 'gamesFailed',
+  gamesLoaded = 'gamesLoaded'
+}
+
 export interface GameStatsState {
   games: Game[];
+  gameFetchStatus: gameFetchStatus;
 }

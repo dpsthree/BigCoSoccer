@@ -34,6 +34,7 @@
     "soccer-stats-data-access-log-in-out": { "tags": [] },
     "shared-util-translation-config": { "tags": [] },
     "soccer-stats-data-access-app-state": { "tags": [] },
-    "shared-util-async-helpers": { "tags": [] }
+    "shared-util-async-helpers": { "tags": [] },
+    "shared-util-config-tokens": { "tags": [] }
   }
 }

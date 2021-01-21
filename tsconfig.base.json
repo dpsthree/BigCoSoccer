@@ -45,6 +45,9 @@
       ],
       "@bsc/shared/util-async-helpers": [
         "libs/shared/util-async-helpers/src/index.ts"
+      ],
+      "@bsc/shared/util-config-tokens": [
+        "libs/shared/util-config-tokens/src/index.ts"
       ]
     },
     "forceConsistentCasingInFileNames": true,

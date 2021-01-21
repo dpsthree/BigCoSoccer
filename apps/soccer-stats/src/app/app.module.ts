@@ -10,6 +10,7 @@ import { SharedDataAccessAuthModule } from '@bsc/shared/data-access-auth';
 import { SharedDataAccessAuthzModule } from '@bsc/shared/data-access-authz';
 import { SharedUtilTranslationConfigModule } from '@bsc/shared/util-translation-config';
 import { reducers } from '@bsc/soccer-stats/data-access-app-state';
+import { BaseUrl } from '@bsc/shared/util-config-tokens';
 
 import { environment } from '../environments/environment';
 
@@ -55,6 +56,10 @@ import {
         appStartupService.startup(),
       deps: [AppStartupService],
       multi: true
+    },
+    {
+      provide: BaseUrl,
+      useValue: environment.baseUrl
     }
   ],
   bootstrap: [AppComponent]

@@ -5,4 +5,5 @@ export interface Environment {
   production: boolean;
   authenticationConfig: AuthenticationConfig;
   authorizationConfig: AuthorizationConfig;
+  baseUrl: string;
 }

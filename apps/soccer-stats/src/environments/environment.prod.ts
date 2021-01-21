@@ -9,5 +9,6 @@ export const environment: Environment = {
   authorizationConfig: {
     authorizationServerAddress: 'some authz server',
     dev: false
-  }
+  },
+  baseUrl: 'https://api.angularbootcamp.com/'
 };
