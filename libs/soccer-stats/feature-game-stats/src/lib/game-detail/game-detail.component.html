@@ -1,1 +1,40 @@
-<p>game-detail works!</p>
+<ng-container *ngIf="gameDetails | async as game">
+  <div class="game-title">
+    <h1 e2e="game-details-name">
+      {{ game.name }} - {{ game.location }} - {{ game.date | date }}
+    </h1>
+    <div>
+      <button
+        mat-raised-button
+        color="warn"
+        (click)="delete()"
+        e2e="delete-game"
+      >
+        Delete
+        <mat-icon>delete</mat-icon>
+      </button>
+      <mat-spinner
+        *ngIf="(deleting | async) === deleteGameStatus.deleteGamePending"
+        diameter="20"
+      ></mat-spinner>
+    </div>
+  </div>
+
+  <!-- <bsc-player-list
+    [players]="game.playerDetails"
+    [playersNotInGame]="playersNotInGame | async"
+    [gameId]="game.id"
+  ></bsc-player-list>
+
+  <bsc-shot-list
+    [shots]="game.shots"
+    [gameId]="game.id"
+    [players]="game.playerDetails"
+  ></bsc-shot-list>
+
+  <bsc-card-list
+    [cards]="game.cards"
+    [gameId]="game.id"
+    [players]="game.playerDetails"
+  ></bsc-card-list> -->
+</ng-container>

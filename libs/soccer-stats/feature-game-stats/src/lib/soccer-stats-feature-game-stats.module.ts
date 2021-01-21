@@ -12,6 +12,9 @@ import { MaterialDepsModule } from './material-deps.module';
 import { AddGameComponent } from './add-game/add-game.component';
 import { GamesEffects } from './state/effects/games.effects';
 import { EffectsModule } from '@ngrx/effects';
+import { PlayerListComponent } from './player-list/player-list.component';
+import { ShotListComponent } from './shot-list/shot-list.component';
+import { CardListComponent } from './card-list/card-list.component';
 
 const routes: Routes = [
   {
@@ -34,7 +37,7 @@ const routes: Routes = [
     EffectsModule.forFeature([GamesEffects]),
     MaterialDepsModule
   ],
-  declarations: [GameStatsPageComponent, GameDetailComponent, AddGameComponent],
+  declarations: [GameStatsPageComponent, GameDetailComponent, AddGameComponent, PlayerListComponent, ShotListComponent, CardListComponent],
   entryComponents: [AddGameComponent]
 })
 export class SoccerStatsFeatureGameStatsModule {}

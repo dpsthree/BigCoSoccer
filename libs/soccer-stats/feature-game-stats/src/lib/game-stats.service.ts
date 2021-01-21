@@ -19,4 +19,10 @@ export class GameStatsService {
       this.http.get<Game[]>(`${this.baseUrl}${gameEndpointLocation}`)
     );
   }
+
+  deleteGame(gameId: string) {
+    return loadWithRetry(() =>
+      this.http.delete<void>(`${this.baseUrl}${gameEndpointLocation}/${gameId}`)
+    );
+  }
 }

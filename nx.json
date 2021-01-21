@@ -35,6 +35,7 @@
     "shared-util-translation-config": { "tags": [] },
     "soccer-stats-data-access-app-state": { "tags": [] },
     "shared-util-async-helpers": { "tags": [] },
-    "shared-util-config-tokens": { "tags": [] }
+    "shared-util-config-tokens": { "tags": [] },
+    "soccer-stats-util-shared-types": { "tags": [] }
   }
 }

@@ -48,6 +48,9 @@
       ],
       "@bsc/shared/util-config-tokens": [
         "libs/shared/util-config-tokens/src/index.ts"
+      ],
+      "@bsc/soccer-stats/util-shared-types": [
+        "libs/soccer-stats/util-shared-types/src/index.ts"
       ]
     },
     "forceConsistentCasingInFileNames": true,

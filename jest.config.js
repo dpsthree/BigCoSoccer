@@ -12,6 +12,7 @@ module.exports = {
     '<rootDir>/libs/shared/util-translation-config',
     '<rootDir>/libs/soccer-stats/data-access-app-state',
     '<rootDir>/libs/shared/util-async-helpers',
-    '<rootDir>/libs/shared/util-config-tokens'
+    '<rootDir>/libs/shared/util-config-tokens',
+    '<rootDir>/libs/soccer-stats/util-shared-types'
   ]
 };

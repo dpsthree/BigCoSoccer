@@ -420,6 +420,31 @@
           }
         }
       }
+    },
+    "soccer-stats-util-shared-types": {
+      "projectType": "library",
+      "root": "libs/soccer-stats/util-shared-types",
+      "sourceRoot": "libs/soccer-stats/util-shared-types/src",
+      "prefix": "bsc",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/soccer-stats/util-shared-types/src/**/*.ts",
+              "libs/soccer-stats/util-shared-types/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/soccer-stats/util-shared-types"],
+          "options": {
+            "jestConfig": "libs/soccer-stats/util-shared-types/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
     }
   },
   "cli": {

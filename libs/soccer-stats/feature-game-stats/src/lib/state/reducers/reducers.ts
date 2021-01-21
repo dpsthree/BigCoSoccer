@@ -1,9 +1,21 @@
 import { ActionReducerMap } from '@ngrx/store';
 
+import { playersReducer, playersFetchReducer } from './players.reducer';
+
 import { GameStatsState } from '../../types';
-import { gamesFetchReducer, gamesReducer } from './games.reducer';
+
+import {
+  gamesFetchReducer,
+  gamesReducer,
+  selectedGameReducer,
+  deleteGameStatusReducer
+} from './games.reducer';
 
 export const gameStatsReducer: ActionReducerMap<GameStatsState> = {
   games: gamesReducer,
-  gameFetchStatus: gamesFetchReducer
+  gameFetchStatus: gamesFetchReducer,
+  selectedGame: selectedGameReducer,
+  deleteGameStatus: deleteGameStatusReducer,
+  players: playersReducer,
+  playerFetchStatus: playersFetchReducer,
 };
