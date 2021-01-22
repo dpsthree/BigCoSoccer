@@ -4,11 +4,15 @@ import { Inject, Injectable } from '@angular/core';
 import { BaseUrl } from '@bsc/shared/util-config-tokens';
 import { loadWithRetry } from '@bsc/shared/util-async-helpers';
 
-import { gameEndpointLocation } from './constants';
-import { Game } from './types';
+import {
+  cardEndpointLocation,
+  gameEndpointLocation,
+  goalEndpointLocation
+} from '../constants';
+import { Card, Game, ShotOnGoal } from '../state.types';
 
 @Injectable({ providedIn: 'root' })
-export class GameStatsService {
+export class GameService {
   constructor(
     private http: HttpClient,
     @Inject(BaseUrl) private baseUrl: string
@@ -23,6 +27,22 @@ export class GameStatsService {
   deleteGame(gameId: string) {
     return loadWithRetry(() =>
       this.http.delete<void>(`${this.baseUrl}${gameEndpointLocation}/${gameId}`)
+    );
+  }
+
+  getShotsForGame(gameId: string) {
+    return loadWithRetry(() =>
+      this.http.get<ShotOnGoal[]>(
+        `${this.baseUrl}${goalEndpointLocation}?game=${gameId}`
+      )
+    );
+  }
+
+  getCardsForGame(gameId: string) {
+    return loadWithRetry(() =>
+      this.http.get<Card[]>(
+        `${this.baseUrl}${cardEndpointLocation}?game=${gameId}`
+      )
     );
   }
 }

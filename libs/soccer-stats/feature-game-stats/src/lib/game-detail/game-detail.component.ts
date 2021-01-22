@@ -3,17 +3,18 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { select, Store } from '@ngrx/store';
 import { pluck, tap } from 'rxjs/operators';
 
-import { selectedGameIdRouteParamName } from '../constants';
 import {
   initiateDeleteGameRequest,
-  selectedGameChanged
-} from '../state/actions/games.actions';
-import {
+  selectedGameDetailsChanged,
   getDeleteGameStatus,
   getPlayersNotInGame,
-  getSelectedGame
-} from '../state/selectors/games.selectors';
-import { GameStatsState, deleteGameStatus } from '../types';
+  getSelectedGame,
+  deleteGameStatus,
+  AppState,
+  selectedGameIdChanged
+} from '@bsc/soccer-stats/data-access-app-state';
+
+import { selectedGameIdRouteParamName } from '../constants';
 
 @Component({
   selector: 'bsc-game-detail',
@@ -24,7 +25,8 @@ export class GameDetailComponent implements OnDestroy {
   gameIdSub = this.ar.params
     .pipe(pluck<unknown, string>(selectedGameIdRouteParamName))
     .subscribe(id => {
-      this.store.dispatch(selectedGameChanged({ selectedGame: id }));
+      console.log('dispatching');
+      this.store.dispatch(selectedGameIdChanged({ selectedGameId: id }));
       this.selectedGameId = id;
     });
 
@@ -42,7 +44,7 @@ export class GameDetailComponent implements OnDestroy {
   constructor(
     private ar: ActivatedRoute,
     private router: Router,
-    private store: Store<GameStatsState>
+    private store: Store<AppState>
   ) {}
 
   delete() {

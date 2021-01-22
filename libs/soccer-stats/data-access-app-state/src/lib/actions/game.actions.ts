@@ -1,6 +1,6 @@
 import { createAction, props } from '@ngrx/store';
 
-import { Game } from '../../types';
+import { Game, GameWithEvents } from '../state.types';
 
 export const gamesStatsFeatureInitialized = createAction(
   'gamesStatsFeatureInitialized'
@@ -16,9 +16,14 @@ export const markGamesRequestSuccess = createAction(
   'markGamesRequestSuccess',
   props<{ games: Game[] }>()
 );
-export const selectedGameChanged = createAction(
+export const selectedGameDetailsChanged = createAction(
+  'selectedGameDetailsChanged',
+  props<{ selectedGameWithEvents: GameWithEvents | undefined }>()
+);
+
+export const selectedGameIdChanged = createAction(
   'selectedGameChanged',
-  props<{ selectedGame: string }>()
+  props<{ selectedGameId: string }>()
 );
 
 export const markDeleteGameRequestInProgress = createAction(

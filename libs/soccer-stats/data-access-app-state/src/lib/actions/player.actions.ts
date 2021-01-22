@@ -1,6 +1,5 @@
 import { createAction, props } from '@ngrx/store';
-
-import { Player } from '@bsc/soccer-stats/util-shared-types';
+import { Player } from '../state.types';
 
 export const markPlayersRequestInProgress = createAction(
   'markPlayersRequestInProgress'

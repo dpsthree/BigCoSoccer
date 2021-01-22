@@ -3,9 +3,9 @@ import { HttpClient } from '@angular/common/http';
 
 import { loadWithRetry } from '@bsc/shared/util-async-helpers';
 import { BaseUrl } from '@bsc/shared/util-config-tokens';
-import { Player } from '@bsc/soccer-stats/util-shared-types';
 
 import { playersEndpoint } from '../constants';
+import { Player } from '../state.types';
 
 @Injectable({ providedIn: 'root' })
 export class PlayerService {

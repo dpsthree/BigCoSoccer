@@ -1,5 +1,10 @@
 import { createReducer, on } from '@ngrx/store';
-import { deleteGameStatus, Game, gameFetchStatus } from '../../types';
+import {
+  deleteGameStatus,
+  Game,
+  gameFetchStatus,
+  GameWithEvents
+} from '../state.types';
 import {
   markDeleteGameRequestFailed,
   markDeleteGameRequestInProgress,
@@ -9,8 +14,8 @@ import {
   markGamesRequestInProgress,
   markGamesRequestRetrying,
   markGamesRequestSuccess,
-  selectedGameChanged
-} from '../actions/games.actions';
+  selectedGameDetailsChanged
+} from '../actions/game.actions';
 
 import { initialState } from '../initial-state';
 
@@ -34,9 +39,9 @@ export const gamesFetchReducer = createReducer(
 
 export const selectedGameReducer = createReducer(
   initialState.selectedGame,
-  on(selectedGameChanged, (_, action) => action.selectedGame),
+  on(selectedGameDetailsChanged, (_, action) => action.selectedGameWithEvents),
   // Make sure that we reset the selected game if it is deleted
-  on<string | undefined>(markDeleteGameRequestSuccess, () => undefined)
+  on<GameWithEvents | undefined>(markDeleteGameRequestSuccess, () => undefined)
 );
 
 export const deleteGameStatusReducer = createReducer(

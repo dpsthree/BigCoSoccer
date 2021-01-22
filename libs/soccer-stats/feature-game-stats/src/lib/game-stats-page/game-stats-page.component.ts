@@ -2,8 +2,8 @@ import { Component } from '@angular/core';
 import { select, Store } from '@ngrx/store';
 import { MatDialog } from '@angular/material/dialog';
 
-import { GameStatsState } from '../types';
-import { getGames } from '../state/selectors/games.selectors';
+import { AppState, getGames } from '@bsc/soccer-stats/data-access-app-state';
+
 import { AddGameComponent } from '../add-game/add-game.component';
 
 @Component({
@@ -15,7 +15,7 @@ export class GameStatsPageComponent {
   games = this.store.pipe(select(getGames));
 
   constructor(
-    private store: Store<GameStatsState>,
+    private store: Store<AppState>,
     private dialog: MatDialog
   ) {}
 

@@ -1,12 +1,12 @@
+import { createReducer, on } from '@ngrx/store';
+
 import {
   markPlayersRequestFailed,
   markPlayersRequestInProgress,
   markPlayersRequestRetrying,
   markPlayersRequestSuccess
-} from '@bsc/soccer-stats/data-access-app-state';
-import { Player } from '@bsc/soccer-stats/util-shared-types';
-import { createReducer, on } from '@ngrx/store';
-import { playerFetchStatus } from '../../types';
+} from '../actions/player.actions';
+import { playerFetchStatus, Player } from '../state.types';
 import { initialState } from '../initial-state';
 
 export const playersReducer = createReducer(
