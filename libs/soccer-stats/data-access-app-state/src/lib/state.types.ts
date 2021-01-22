@@ -8,6 +8,7 @@ export interface AppState {
   gameFetchStatus: gameFetchStatus;
   selectedGame: GameWithEvents | undefined;
   deleteGameStatus: deleteGameStatus;
+  addGameStatus: addGameStatusMessages;
 }
 
 export interface Game {
@@ -69,6 +70,14 @@ export enum deleteGameStatus {
   deleteGamePending = 'deleteGamePending',
   deleteGameFinished = 'deleteGameFinished',
   deleteGameFailed = 'deleteGameFailed',
+  notStarted = 'notStarted'
+}
+
+export enum addGameStatusMessages {
+  addGameInProgress = 'addGameInProgress',
+  addGameRetrying = 'addGameRetrying',
+  addGameFailed = 'addGameFailed',
+  addGameSuccess = 'addGameSuccess',
   notStarted = 'notStarted'
 }
 

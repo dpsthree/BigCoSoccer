@@ -19,6 +19,7 @@ import { CardListComponent } from './card-list/card-list.component';
 import { AddPlayerToGameComponent } from './add-player-to-game/add-player-to-game.component';
 import { AddShotToGameComponent } from './add-shot-to-game/add-shot-to-game.component';
 import { AddCardToGameComponent } from './add-card-to-game/add-card-to-game.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 const routes: Routes = [
   {
@@ -36,6 +37,7 @@ const routes: Routes = [
 @NgModule({
   imports: [
     CommonModule,
+    ReactiveFormsModule,
     RouterModule.forChild(routes),
     EffectsModule.forFeature([GameEffects, PlayerEffects]),
     MaterialDepsModule

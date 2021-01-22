@@ -10,7 +10,8 @@ import {
   getSelectedGame,
   deleteGameStatus,
   AppState,
-  selectedGameIdChanged
+  selectedGameIdChanged,
+  ackDeleteGameStatus
 } from '@bsc/soccer-stats/data-access-app-state';
 
 import { selectedGameIdRouteParamName } from '../constants';
@@ -34,6 +35,7 @@ export class GameDetailComponent implements OnDestroy {
     tap(status => {
       if (status === deleteGameStatus.deleteGameFinished) {
         this.router.navigate(['games']);
+        this.store.dispatch(ackDeleteGameStatus());
       }
     })
   );

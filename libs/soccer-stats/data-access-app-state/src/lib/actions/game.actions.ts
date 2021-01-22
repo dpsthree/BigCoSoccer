@@ -2,9 +2,7 @@ import { createAction, props } from '@ngrx/store';
 
 import { Game, GameWithEvents } from '../state.types';
 
-export const requestInitialGameList = createAction(
-  'requestInitialGameList'
-);
+export const requestInitialGameList = createAction('requestInitialGameList');
 
 export const markGamesRequestInProgress = createAction(
   'markGamesRequestInProgress'
@@ -39,7 +37,28 @@ export const markDeleteGameRequestFailed = createAction(
 export const markDeleteGameRequestSuccess = createAction(
   'deleteGameRequestSuccess'
 );
+export const ackDeleteGameStatus = createAction('ackDeleteGameStatus');
+
 export const initiateDeleteGameRequest = createAction(
   'deleteGameRequest',
   props<{ gameId: string }>()
 );
+
+export const initiateAddGameRequest = createAction(
+  'initiateAddGameRequest',
+  props<Partial<Game>>()
+);
+
+export const markAddGameRequestInProgress = createAction(
+  'markAddGameRequestInProgress'
+);
+export const markAddGameRequestRetrying = createAction(
+  'markAddGameRequestRetrying'
+);
+export const markAddGameRequestFailed = createAction(
+  'markAddGameRequestFailed'
+);
+export const markAddGameRequestSuccess = createAction(
+  'markAddGameRequestSuccess'
+);
+export const ackAddGameStatus = createAction('ackAddGameStatus');

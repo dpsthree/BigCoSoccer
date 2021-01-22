@@ -1,4 +1,5 @@
 import {
+  addGameStatusMessages,
   AppState,
   deleteGameStatus,
   gameFetchStatus,
@@ -12,5 +13,6 @@ export const initialState: AppState = {
   selectedGame: undefined,
   deleteGameStatus: deleteGameStatus.notStarted,
   players: [],
-  playerFetchStatus: playerFetchStatus.playersLoading
+  playerFetchStatus: playerFetchStatus.playersLoading,
+  addGameStatus: addGameStatusMessages.notStarted,
 };

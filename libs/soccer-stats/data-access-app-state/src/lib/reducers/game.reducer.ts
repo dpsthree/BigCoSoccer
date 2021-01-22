@@ -1,11 +1,18 @@
 import { createReducer, on } from '@ngrx/store';
 import {
+  addGameStatusMessages,
   deleteGameStatus,
   Game,
   gameFetchStatus,
   GameWithEvents
 } from '../state.types';
 import {
+  ackAddGameStatus,
+  ackDeleteGameStatus,
+  markAddGameRequestFailed,
+  markAddGameRequestInProgress,
+  markAddGameRequestRetrying,
+  markAddGameRequestSuccess,
   markDeleteGameRequestFailed,
   markDeleteGameRequestInProgress,
   markDeleteGameRequestRetrying,
@@ -49,7 +56,20 @@ export const deleteGameStatusReducer = createReducer(
   on(markDeleteGameRequestInProgress, () => deleteGameStatus.deleteGamePending),
   on(markDeleteGameRequestRetrying, () => deleteGameStatus.deleteGamePending),
   on(markDeleteGameRequestFailed, () => deleteGameStatus.deleteGameFailed),
-  on(markDeleteGameRequestSuccess, () => deleteGameStatus.deleteGameFinished)
+  on(markDeleteGameRequestSuccess, () => deleteGameStatus.deleteGameFinished),
+  on(ackDeleteGameStatus, () => deleteGameStatus.notStarted)
+);
+
+export const addGameStatusReducer = createReducer(
+  initialState.addGameStatus,
+  on(
+    markAddGameRequestInProgress,
+    () => addGameStatusMessages.addGameInProgress
+  ),
+  on(markAddGameRequestRetrying, () => addGameStatusMessages.addGameRetrying),
+  on(markAddGameRequestFailed, () => addGameStatusMessages.addGameFailed),
+  on(markAddGameRequestSuccess, () => addGameStatusMessages.addGameSuccess),
+  on(ackAddGameStatus, () => addGameStatusMessages.notStarted)
 );
 
 function resetGames(): Game[] {

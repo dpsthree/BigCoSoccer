@@ -27,7 +27,12 @@ import {
   markDeleteGameRequestRetrying,
   markDeleteGameRequestInProgress,
   selectedGameIdChanged,
-  selectedGameDetailsChanged
+  selectedGameDetailsChanged,
+  initiateAddGameRequest,
+  markAddGameRequestFailed,
+  markAddGameRequestInProgress,
+  markAddGameRequestRetrying,
+  markAddGameRequestSuccess
 } from '../actions/game.actions';
 import { combineLatest, Observable, of } from 'rxjs';
 import {
@@ -43,7 +48,7 @@ import { getPlayers } from '../selectors/player.selectors';
 
 @Injectable()
 export class GameEffects {
-  fetchGames = createEffect(() => {
+  fetchInitialGames = createEffect(() => {
     return this.actions.pipe(
       ofType(requestInitialGameList),
       switchMap(() => this.gameService.getGames()),
@@ -51,6 +56,25 @@ export class GameEffects {
         requestUpdate => requestUpdate.status !== LoadResultStatus.SUCCESS,
         true
       ),
+      map(requestUpdate => {
+        switch (requestUpdate.status) {
+          case LoadResultStatus.IN_PROGRESS:
+            return markGamesRequestInProgress();
+          case LoadResultStatus.RETRYING:
+            return markGamesRequestRetrying();
+          case LoadResultStatus.SUCCESS:
+            return markGamesRequestSuccess({ games: requestUpdate.results });
+          default:
+            return markGamesRequestFailed();
+        }
+      })
+    );
+  });
+
+  fetchGames = createEffect(() => {
+    return this.actions.pipe(
+      ofType(markDeleteGameRequestSuccess, markAddGameRequestSuccess),
+      switchMap(() => this.gameService.getGames()),
       map(requestUpdate => {
         switch (requestUpdate.status) {
           case LoadResultStatus.IN_PROGRESS:
@@ -100,6 +124,25 @@ export class GameEffects {
             return markDeleteGameRequestSuccess();
           default:
             return markDeleteGameRequestFailed();
+        }
+      })
+    );
+  });
+
+  addGame = createEffect(() => {
+    return this.actions.pipe(
+      ofType(initiateAddGameRequest),
+      mergeMap(game => this.gameService.addGame(game)),
+      map(requestUpdate => {
+        switch (requestUpdate.status) {
+          case LoadResultStatus.IN_PROGRESS:
+            return markAddGameRequestInProgress();
+          case LoadResultStatus.RETRYING:
+            return markAddGameRequestRetrying();
+          case LoadResultStatus.SUCCESS:
+            return markAddGameRequestSuccess();
+          default:
+            return markAddGameRequestFailed();
         }
       })
     );

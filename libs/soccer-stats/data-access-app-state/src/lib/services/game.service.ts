@@ -30,6 +30,12 @@ export class GameService {
     );
   }
 
+  addGame(game: Partial<Game>) {
+    return loadWithRetry(() =>
+      this.http.post<Game>(`${this.baseUrl}${gameEndpointLocation}`, game)
+    );
+  }
+
   getShotsForGame(gameId: string) {
     return loadWithRetry(() =>
       this.http.get<ShotOnGoal[]>(
