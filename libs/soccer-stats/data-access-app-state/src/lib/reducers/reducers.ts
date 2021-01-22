@@ -9,7 +9,8 @@ import {
   gamesReducer,
   selectedGameReducer,
   deleteGameStatusReducer,
-  addGameStatusReducer
+  addGameStatusReducer,
+  addPlayerToGameStatusReducer
 } from './game.reducer';
 
 export const reducers: ActionReducerMap<AppState> = {
@@ -20,5 +21,6 @@ export const reducers: ActionReducerMap<AppState> = {
   deleteGameStatus: deleteGameStatusReducer,
   players: playersReducer,
   playerFetchStatus: playersFetchReducer,
-  addGameStatus: addGameStatusReducer
+  addGameStatus: addGameStatusReducer,
+  addPlayerToGameStatus: addPlayerToGameStatusReducer
 };

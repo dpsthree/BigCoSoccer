@@ -5,6 +5,7 @@ import {
   map,
   mergeMap,
   switchMap,
+  take,
   takeWhile,
   withLatestFrom
 } from 'rxjs/operators';
@@ -32,9 +33,14 @@ import {
   markAddGameRequestFailed,
   markAddGameRequestInProgress,
   markAddGameRequestRetrying,
-  markAddGameRequestSuccess
+  markAddGameRequestSuccess,
+  initiateAddPlayerToGameRequest,
+  markAddPlayerToGameRequestFailed,
+  markAddPlayerToGameRequestInProgress,
+  markAddPlayerToGameRequestRetrying,
+  markAddPlayerToGameRequestSuccess
 } from '../actions/game.actions';
-import { combineLatest, Observable, of } from 'rxjs';
+import { combineLatest, NEVER, Observable, of } from 'rxjs';
 import {
   AppState,
   Card,
@@ -43,7 +49,7 @@ import {
   Player,
   ShotOnGoal
 } from '../state.types';
-import { getGames } from '../selectors/game.selectors';
+import { getGames, getSelectedGame } from '../selectors/game.selectors';
 import { getPlayers } from '../selectors/player.selectors';
 
 @Injectable()
@@ -120,6 +126,37 @@ export class GameEffects {
     );
   });
 
+  refreshGameDetails = createEffect(() => {
+    return this.actions.pipe(
+      ofType(markAddPlayerToGameRequestSuccess),
+      switchMap(() => this.store.select(getSelectedGame).pipe(take(1))),
+      switchMap(game => {
+        if (game) {
+          return this.gameService.getGame(game.id).pipe(waitForResults());
+        } else {
+          return NEVER;
+        }
+      }),
+      switchMap(game =>
+        of(game).pipe(withLatestFrom(this.store.select(getPlayers)))
+      ),
+      map(([game, players]) => {
+        if (game) {
+          players = players.filter(player =>
+            game.players.find(gamePlayer => gamePlayer === player.id)
+          );
+        }
+
+        return {
+          game,
+          players
+        };
+      }),
+      switchMap(({ game, players }) => this.gatherGameDetails(game, players)),
+      map(game => selectedGameDetailsChanged({ selectedGameWithEvents: game }))
+    );
+  });
+
   deleteGame = createEffect(() => {
     return this.actions.pipe(
       ofType(initiateDeleteGameRequest),
@@ -153,6 +190,46 @@ export class GameEffects {
             return markAddGameRequestSuccess();
           default:
             return markAddGameRequestFailed();
+        }
+      })
+    );
+  });
+
+  addPlayerToGame = createEffect(() => {
+    return this.actions.pipe(
+      ofType(initiateAddPlayerToGameRequest),
+      switchMap(action =>
+        of(action).pipe(withLatestFrom(this.store.select(getSelectedGame)))
+      ),
+      map(([action, game]) => {
+        if (!game) {
+          throw new Error('Invalid State, game not found');
+        }
+        const simplifiedGame: Game = {
+          date: game.date,
+          id: game.id,
+          name: game.name,
+          location: game.location,
+          players: game.players
+        };
+        return {
+          game: simplifiedGame,
+          player: action.player
+        };
+      }),
+      mergeMap(({ game, player }) =>
+        this.gameService.addPlayerToGame(game, player)
+      ),
+      map(requestUpdate => {
+        switch (requestUpdate.status) {
+          case LoadResultStatus.IN_PROGRESS:
+            return markAddPlayerToGameRequestInProgress();
+          case LoadResultStatus.RETRYING:
+            return markAddPlayerToGameRequestRetrying();
+          case LoadResultStatus.SUCCESS:
+            return markAddPlayerToGameRequestSuccess();
+          default:
+            return markAddPlayerToGameRequestFailed();
         }
       })
     );
@@ -202,7 +279,7 @@ function buildGameWithEvents(
   }));
   return {
     ...game,
-    playerDetails,
+    playerDetails: [...playerDetails],
     shots: shotsWithNames,
     cards: cardsWithNames
   } as GameWithEvents;

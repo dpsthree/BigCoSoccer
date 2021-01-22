@@ -24,6 +24,12 @@ export class GameService {
     );
   }
 
+  getGame(gameId: string) {
+    return loadWithRetry(() =>
+      this.http.get<Game>(`${this.baseUrl}${gameEndpointLocation}/${gameId}`)
+    );
+  }
+
   deleteGame(gameId: string) {
     return loadWithRetry(() =>
       this.http.delete<void>(`${this.baseUrl}${gameEndpointLocation}/${gameId}`)
@@ -33,6 +39,15 @@ export class GameService {
   addGame(game: Partial<Game>) {
     return loadWithRetry(() =>
       this.http.post<Game>(`${this.baseUrl}${gameEndpointLocation}`, game)
+    );
+  }
+
+  addPlayerToGame(game: Game, player: string) {
+    return loadWithRetry(() =>
+      this.http.put(`${this.baseUrl}${gameEndpointLocation}/${game.id}`, {
+        ...game,
+        players: [...game.players, player]
+      })
     );
   }
 

@@ -16,6 +16,8 @@ export const getPlayersNotInGame = createSelector(
 
 export const getDeleteGameStatus = (state: AppState) => state.deleteGameStatus;
 export const getAddGameStatus = (state: AppState) => state.addGameStatus;
+export const getAddPlayerToGameStatus = (state: AppState) =>
+  state.addPlayerToGameStatus;
 
 function playersNotInAGame(
   game: GameWithEvents | undefined,

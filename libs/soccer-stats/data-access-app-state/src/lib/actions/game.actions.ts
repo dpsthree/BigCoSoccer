@@ -21,7 +21,7 @@ export const selectedGameDetailsChanged = createAction(
 );
 
 export const selectedGameIdChanged = createAction(
-  'selectedGameChanged',
+  'selectedGameIdChanged',
   props<{ selectedGameId: string }>()
 );
 
@@ -35,12 +35,12 @@ export const markDeleteGameRequestFailed = createAction(
   'markDeleteGameRequestFailed'
 );
 export const markDeleteGameRequestSuccess = createAction(
-  'deleteGameRequestSuccess'
+  'markDeleteGameRequestSuccess'
 );
 export const ackDeleteGameStatus = createAction('ackDeleteGameStatus');
 
 export const initiateDeleteGameRequest = createAction(
-  'deleteGameRequest',
+  'initiateDeleteGameRequest',
   props<{ gameId: string }>()
 );
 
@@ -62,3 +62,22 @@ export const markAddGameRequestSuccess = createAction(
   'markAddGameRequestSuccess'
 );
 export const ackAddGameStatus = createAction('ackAddGameStatus');
+
+export const initiateAddPlayerToGameRequest = createAction(
+  'initiateAddPlayerToGameRequest',
+  props<{game: string, player: string}>()
+);
+
+export const markAddPlayerToGameRequestInProgress = createAction(
+  'markAddPlayerToGameRequestInProgress'
+);
+export const markAddPlayerToGameRequestRetrying = createAction(
+  'markAddPlayerToGameRequestRetrying'
+);
+export const markAddPlayerToGameRequestFailed = createAction(
+  'markAddPlayerToGameRequestFailed'
+);
+export const markAddPlayerToGameRequestSuccess = createAction(
+  'markAddPlayerToGameRequestSuccess'
+);
+export const ackAddPlayerToGameStatus = createAction('ackAddPlayerToGameStatus');

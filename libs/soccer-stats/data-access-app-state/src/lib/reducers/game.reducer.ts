@@ -1,6 +1,7 @@
 import { createReducer, on } from '@ngrx/store';
 import {
   addGameStatusMessages,
+  addPlayerToGameStatusMessages,
   deleteGameStatus,
   Game,
   gameFetchStatus,
@@ -8,11 +9,16 @@ import {
 } from '../state.types';
 import {
   ackAddGameStatus,
+  ackAddPlayerToGameStatus,
   ackDeleteGameStatus,
   markAddGameRequestFailed,
   markAddGameRequestInProgress,
   markAddGameRequestRetrying,
   markAddGameRequestSuccess,
+  markAddPlayerToGameRequestFailed,
+  markAddPlayerToGameRequestInProgress,
+  markAddPlayerToGameRequestRetrying,
+  markAddPlayerToGameRequestSuccess,
   markDeleteGameRequestFailed,
   markDeleteGameRequestInProgress,
   markDeleteGameRequestRetrying,
@@ -70,6 +76,27 @@ export const addGameStatusReducer = createReducer(
   on(markAddGameRequestFailed, () => addGameStatusMessages.addGameFailed),
   on(markAddGameRequestSuccess, () => addGameStatusMessages.addGameSuccess),
   on(ackAddGameStatus, () => addGameStatusMessages.notStarted)
+);
+
+export const addPlayerToGameStatusReducer = createReducer(
+  initialState.addPlayerToGameStatus,
+  on(
+    markAddPlayerToGameRequestInProgress,
+    () => addPlayerToGameStatusMessages.addPlayerToGameInProgress
+  ),
+  on(
+    markAddPlayerToGameRequestRetrying,
+    () => addPlayerToGameStatusMessages.addPlayerToGameRetrying
+  ),
+  on(
+    markAddPlayerToGameRequestFailed,
+    () => addPlayerToGameStatusMessages.addPlayerToGameFailed
+  ),
+  on(
+    markAddPlayerToGameRequestSuccess,
+    () => addPlayerToGameStatusMessages.addPlayerToGameSuccess
+  ),
+  on(ackAddPlayerToGameStatus, () => addPlayerToGameStatusMessages.notStarted)
 );
 
 function resetGames(): Game[] {
