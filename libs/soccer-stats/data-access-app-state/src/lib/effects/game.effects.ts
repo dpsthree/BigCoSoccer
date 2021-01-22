@@ -101,10 +101,20 @@ export class GameEffects {
           )
         )
       ),
-      map(([action, games, players]) => ({
-        game: games.find(game => action.selectedGameId === game.id),
-        players
-      })),
+      map(([action, games, allPlayers]) => {
+        const game = games.find(game => action.selectedGameId === game.id);
+        let players: Player[] = [];
+        if (game) {
+          players = allPlayers.filter(player =>
+            game.players.find(gamePlayer => gamePlayer === player.id)
+          );
+        }
+
+        return {
+          game,
+          players
+        };
+      }),
       switchMap(({ game, players }) => this.gatherGameDetails(game, players)),
       map(game => selectedGameDetailsChanged({ selectedGameWithEvents: game }))
     );
