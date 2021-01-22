@@ -5,7 +5,6 @@ import { pluck, tap } from 'rxjs/operators';
 
 import {
   initiateDeleteGameRequest,
-  selectedGameDetailsChanged,
   getDeleteGameStatus,
   getPlayersNotInGame,
   getSelectedGame,
@@ -25,7 +24,6 @@ export class GameDetailComponent implements OnDestroy {
   gameIdSub = this.ar.params
     .pipe(pluck<unknown, string>(selectedGameIdRouteParamName))
     .subscribe(id => {
-      console.log('dispatching');
       this.store.dispatch(selectedGameIdChanged({ selectedGameId: id }));
       this.selectedGameId = id;
     });

@@ -1,11 +1,10 @@
 import { Injectable } from '@angular/core';
-import { Actions, createEffect, ofType, OnInitEffects } from '@ngrx/effects';
-import { Action, Store } from '@ngrx/store';
+import { Actions, createEffect, ofType } from '@ngrx/effects';
+import { Store } from '@ngrx/store';
 import {
   map,
   mergeMap,
   switchMap,
-  take,
   takeWhile,
   withLatestFrom
 } from 'rxjs/operators';
@@ -70,15 +69,14 @@ export class GameEffects {
   fetchGameDetails = createEffect(() => {
     return this.actions.pipe(
       ofType(selectedGameIdChanged),
-      switchMap(action => {
-        console.log('switching');
-        return of(action).pipe(
+      switchMap(action =>
+        of(action).pipe(
           withLatestFrom(
             this.store.select(getGames),
             this.store.select(getPlayers)
           )
-        );
-      }),
+        )
+      ),
       map(([action, games, players]) => ({
         game: games.find(game => action.selectedGameId === game.id),
         players
