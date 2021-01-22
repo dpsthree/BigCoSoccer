@@ -8,9 +8,8 @@ describe('AddShotToGameComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AddShotToGameComponent ]
-    })
-    .compileComponents();
+      declarations: [AddShotToGameComponent]
+    }).compileComponents();
   });
 
   beforeEach(() => {

@@ -117,18 +117,9 @@ export const addShotStatusReducer = createReducer(
     markAddShotRequestInProgress,
     () => addShotStatusMessages.addShotInProgress
   ),
-  on(
-    markAddShotRequestRetrying,
-    () => addShotStatusMessages.addShotRetrying
-  ),
-  on(
-    markAddShotRequestFailed,
-    () => addShotStatusMessages.addShotFailed
-  ),
-  on(
-    markAddShotRequestSuccess,
-    () => addShotStatusMessages.addShotSuccess
-  ),
+  on(markAddShotRequestRetrying, () => addShotStatusMessages.addShotRetrying),
+  on(markAddShotRequestFailed, () => addShotStatusMessages.addShotFailed),
+  on(markAddShotRequestSuccess, () => addShotStatusMessages.addShotSuccess),
   on(ackAddShotStatus, () => addShotStatusMessages.notStarted)
 );
 
@@ -138,18 +129,9 @@ export const addCardStatusReducer = createReducer(
     markAddCardRequestInProgress,
     () => addCardStatusMessages.addCardInProgress
   ),
-  on(
-    markAddCardRequestRetrying,
-    () => addCardStatusMessages.addCardRetrying
-  ),
-  on(
-    markAddCardRequestFailed,
-    () => addCardStatusMessages.addCardFailed
-  ),
-  on(
-    markAddCardRequestSuccess,
-    () => addCardStatusMessages.addCardSuccess
-  ),
+  on(markAddCardRequestRetrying, () => addCardStatusMessages.addCardRetrying),
+  on(markAddCardRequestFailed, () => addCardStatusMessages.addCardFailed),
+  on(markAddCardRequestSuccess, () => addCardStatusMessages.addCardSuccess),
   on(ackAddCardStatus, () => addCardStatusMessages.notStarted)
 );
 

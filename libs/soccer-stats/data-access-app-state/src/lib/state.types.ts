@@ -15,7 +15,6 @@ export interface AppState {
   addPlayerStatus: addPlayerStatusMessages;
   selectedPlayer: PlayerWithStats | undefined;
   deletePlayerStatus: deletePlayerStatus;
-
 }
 
 export interface Game {
@@ -113,13 +112,12 @@ export enum addShotStatusMessages {
   notStarted = 'notStarted'
 }
 
-
 export enum addCardStatusMessages {
   addCardInProgress = 'addCardInProgress',
   addCardRetrying = 'addCardRetrying',
   addCardFailed = 'addCardFailed',
   addCardSuccess = 'addCardSuccess',
-  notStarted = 'notStarted',
+  notStarted = 'notStarted'
 }
 
 export enum deletePlayerStatus {
@@ -128,7 +126,6 @@ export enum deletePlayerStatus {
   deletePlayerFailed = 'deletePlayerFailed',
   notStarted = 'notStarted'
 }
-
 
 export interface Player {
   id: string;

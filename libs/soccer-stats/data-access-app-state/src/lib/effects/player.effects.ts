@@ -1,14 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import {
-  map,
-  mergeMap,
-  switchMap,
-  take,
-  takeWhile,
-  tap,
-  withLatestFrom
-} from 'rxjs/operators';
+import { map, mergeMap, switchMap, take, takeWhile, tap } from 'rxjs/operators';
 
 import {
   LoadResultStatus,
@@ -78,7 +70,11 @@ export class PlayerEffects {
 
   fetchPlayers = createEffect(() => {
     return this.actions.pipe(
-      ofType(markAddPlayerRequestSuccess, markDeletePlayerRequestSuccess, markChangePlayerNameComplete),
+      ofType(
+        markAddPlayerRequestSuccess,
+        markDeletePlayerRequestSuccess,
+        markChangePlayerNameComplete
+      ),
       switchMap(() => this.playersService.getPlayers()),
       map(requestUpdate => {
         switch (requestUpdate.status) {

@@ -8,9 +8,8 @@ describe('PlayerNameEditorComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ PlayerNameEditorComponent ]
-    })
-    .compileComponents();
+      declarations: [PlayerNameEditorComponent]
+    }).compileComponents();
   });
 
   beforeEach(() => {

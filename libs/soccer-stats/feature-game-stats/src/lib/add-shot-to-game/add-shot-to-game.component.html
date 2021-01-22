@@ -44,10 +44,8 @@
     mat-button
     (click)="save()"
     [disabled]="
-      (addShotStatus | async) ===
-        addShotStatusMessages.addShotInProgress ||
-      (addShotStatus | async) ===
-        addShotStatusMessages.addShotRetrying ||
+      (addShotStatus | async) === addShotStatusMessages.addShotInProgress ||
+      (addShotStatus | async) === addShotStatusMessages.addShotRetrying ||
       shotForm.invalid
     "
     e2e="submit-new-shot"
@@ -56,8 +54,7 @@
   </button>
   <mat-spinner
     *ngIf="
-      (addShotStatus | async) ===
-        addShotStatusMessages.addShotInProgress ||
+      (addShotStatus | async) === addShotStatusMessages.addShotInProgress ||
       (addShotStatus | async) === addShotStatusMessages.addShotInProgress
     "
     diameter="20"
