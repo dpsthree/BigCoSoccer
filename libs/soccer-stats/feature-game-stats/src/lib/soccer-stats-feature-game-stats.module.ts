@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { EffectsModule } from '@ngrx/effects';
 
-import { GameEffects} from '@bsc/soccer-stats/data-access-app-state';
+import { GameEffects, PlayerEffects} from '@bsc/soccer-stats/data-access-app-state';
 
 import { selectedGameIdRouteParamName } from './constants';
 import { GameStatsPageComponent } from './game-stats-page/game-stats-page.component';
@@ -31,7 +31,7 @@ const routes: Routes = [
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
-    EffectsModule.forFeature([GameEffects]),
+    EffectsModule.forFeature([GameEffects, PlayerEffects]),
     MaterialDepsModule
   ],
   declarations: [GameStatsPageComponent, GameDetailComponent, AddGameComponent, PlayerListComponent, ShotListComponent, CardListComponent],

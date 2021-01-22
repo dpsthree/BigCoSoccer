@@ -2,9 +2,10 @@ import { createAction, props } from '@ngrx/store';
 
 import { Game, GameWithEvents } from '../state.types';
 
-export const gamesStatsFeatureInitialized = createAction(
-  'gamesStatsFeatureInitialized'
+export const requestInitialGameList = createAction(
+  'requestInitialGameList'
 );
+
 export const markGamesRequestInProgress = createAction(
   'markGamesRequestInProgress'
 );

@@ -14,3 +14,7 @@ export const markPlayersRequestSuccess = createAction(
   'markPlayersRequestSuccess',
   props<{ players: Player[] }>()
 );
+
+export const requestInitialPlayerList = createAction(
+  'requestInitialPlayerList'
+);

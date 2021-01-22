@@ -1,7 +1,14 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType, OnInitEffects } from '@ngrx/effects';
 import { Action, Store } from '@ngrx/store';
-import { map, mergeMap, switchMap, withLatestFrom } from 'rxjs/operators';
+import {
+  map,
+  mergeMap,
+  switchMap,
+  take,
+  takeWhile,
+  withLatestFrom
+} from 'rxjs/operators';
 
 import {
   LoadResultStatus,
@@ -11,7 +18,7 @@ import {
 import { GameService } from '../services/game.service';
 import {
   initiateDeleteGameRequest,
-  gamesStatsFeatureInitialized,
+  requestInitialGameList,
   markGamesRequestFailed,
   markGamesRequestInProgress,
   markGamesRequestRetrying,
@@ -36,11 +43,15 @@ import { getGames } from '../selectors/game.selectors';
 import { getPlayers } from '../selectors/player.selectors';
 
 @Injectable()
-export class GameEffects implements OnInitEffects {
+export class GameEffects {
   fetchGames = createEffect(() => {
     return this.actions.pipe(
-      ofType(gamesStatsFeatureInitialized),
+      ofType(requestInitialGameList),
       switchMap(() => this.gameService.getGames()),
+      takeWhile(
+        requestUpdate => requestUpdate.status !== LoadResultStatus.SUCCESS,
+        true
+      ),
       map(requestUpdate => {
         switch (requestUpdate.status) {
           case LoadResultStatus.IN_PROGRESS:
@@ -59,15 +70,15 @@ export class GameEffects implements OnInitEffects {
   fetchGameDetails = createEffect(() => {
     return this.actions.pipe(
       ofType(selectedGameIdChanged),
-      switchMap(action =>{
-        console.log('switching')
+      switchMap(action => {
+        console.log('switching');
         return of(action).pipe(
           withLatestFrom(
             this.store.select(getGames),
             this.store.select(getPlayers)
           )
-        )
-          }),
+        );
+      }),
       map(([action, games, players]) => ({
         game: games.find(game => action.selectedGameId === game.id),
         players
@@ -101,10 +112,6 @@ export class GameEffects implements OnInitEffects {
     private store: Store<AppState>,
     private gameService: GameService
   ) {}
-
-  ngrxOnInitEffects(): Action {
-    return gamesStatsFeatureInitialized();
-  }
 
   gatherGameDetails(
     game: Game | undefined,
