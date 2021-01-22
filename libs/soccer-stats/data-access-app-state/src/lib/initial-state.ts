@@ -1,6 +1,7 @@
 import {
   addCardStatusMessages,
   addGameStatusMessages,
+  addPlayerStatusMessages,
   addPlayerToGameStatusMessages,
   addShotStatusMessages,
   AppState,
@@ -20,5 +21,6 @@ export const initialState: AppState = {
   addGameStatus: addGameStatusMessages.notStarted,
   addPlayerToGameStatus: addPlayerToGameStatusMessages.notStarted,
   addShotStatus: addShotStatusMessages.notStarted,
-  addCardStatus: addCardStatusMessages.notStarted
+  addCardStatus: addCardStatusMessages.notStarted,
+  addPlayerStatus: addPlayerStatusMessages.notStarted,
 };

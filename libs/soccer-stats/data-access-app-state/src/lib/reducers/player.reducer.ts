@@ -1,12 +1,21 @@
 import { createReducer, on } from '@ngrx/store';
 
 import {
+  ackAddPlayerStatus,
+  markAddPlayerRequestFailed,
+  markAddPlayerRequestInProgress,
+  markAddPlayerRequestRetrying,
+  markAddPlayerRequestSuccess,
   markPlayersRequestFailed,
   markPlayersRequestInProgress,
   markPlayersRequestRetrying,
   markPlayersRequestSuccess
 } from '../actions/player.actions';
-import { playerFetchStatus, Player } from '../state.types';
+import {
+  playerFetchStatus,
+  Player,
+  addPlayerStatusMessages
+} from '../state.types';
 import { initialState } from '../initial-state';
 
 export const playersReducer = createReducer(
@@ -23,6 +32,24 @@ export const playersFetchReducer = createReducer(
   on(markPlayersRequestRetrying, () => playerFetchStatus.playersRetrying),
   on(markPlayersRequestSuccess, () => playerFetchStatus.playersLoaded),
   on(markPlayersRequestFailed, () => playerFetchStatus.playersFailed)
+);
+
+export const addPlayerStatusReducer = createReducer(
+  initialState.addPlayerStatus,
+  on(
+    markAddPlayerRequestInProgress,
+    () => addPlayerStatusMessages.addPlayerInProgress
+  ),
+  on(
+    markAddPlayerRequestRetrying,
+    () => addPlayerStatusMessages.addPlayerRetrying
+  ),
+  on(markAddPlayerRequestFailed, () => addPlayerStatusMessages.addPlayerFailed),
+  on(
+    markAddPlayerRequestSuccess,
+    () => addPlayerStatusMessages.addPlayerSuccess
+  ),
+  on(ackAddPlayerStatus, () => addPlayerStatusMessages.notStarted)
 );
 
 function resetPlayers(): Player[] {

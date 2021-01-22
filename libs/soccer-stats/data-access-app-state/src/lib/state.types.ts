@@ -12,6 +12,7 @@ export interface AppState {
   addPlayerToGameStatus: addPlayerToGameStatusMessages;
   addShotStatus: addShotStatusMessages;
   addCardStatus: addCardStatusMessages;
+  addPlayerStatus: addPlayerStatusMessages;
 }
 
 export interface Game {
@@ -84,11 +85,21 @@ export enum addGameStatusMessages {
   notStarted = 'notStarted'
 }
 
+// "the the game" as opposed to "to the system"
 export enum addPlayerToGameStatusMessages {
   addPlayerToGameInProgress = 'addPlayerToGameInProgress',
   addPlayerToGameRetrying = 'addPlayerToGameRetrying',
   addPlayerToGameFailed = 'addPlayerToGameFailed',
   addPlayerToGameSuccess = 'addPlayerToGameSuccess',
+  notStarted = 'notStarted'
+}
+
+// "to the system" as opposed to "to the game"
+export enum addPlayerStatusMessages {
+  addPlayerInProgress = 'addPlayerInProgress',
+  addPlayerRetrying = 'addPlayerRetrying',
+  addPlayerFailed = 'addPlayerFailed',
+  addPlayerSuccess = 'addPlayerSuccess',
   notStarted = 'notStarted'
 }
 

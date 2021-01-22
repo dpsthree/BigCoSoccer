@@ -18,3 +18,24 @@ export const markPlayersRequestSuccess = createAction(
 export const requestInitialPlayerList = createAction(
   'requestInitialPlayerList'
 );
+
+export const initiateAddPlayerRequest = createAction(
+  'initiateAddPlayerRequest',
+  props<{player: string}>()
+);
+
+export const markAddPlayerRequestInProgress = createAction(
+  'markAddPlayerRequestInProgress'
+);
+export const markAddPlayerRequestRetrying = createAction(
+  'markAddPlayerRequestRetrying'
+);
+export const markAddPlayerRequestFailed = createAction(
+  'markAddPlayerRequestFailed'
+);
+export const markAddPlayerRequestSuccess = createAction(
+  'markAddPlayerRequestSuccess'
+);
+export const ackAddPlayerStatus = createAction(
+  'ackAddPlayerStatus'
+);

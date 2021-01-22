@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { PlayerStatsPageComponent } from './player-stats-page/player-stats-page.component';
 import { selectedPlayerIdRouteParamName } from './constants';
@@ -22,7 +23,16 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [CommonModule, RouterModule.forChild(routes), MaterialDepsModule],
-  declarations: [PlayerStatsPageComponent, PlayerDetailComponent, AddPlayerComponent]
+  imports: [
+    CommonModule,
+    RouterModule.forChild(routes),
+    ReactiveFormsModule,
+    MaterialDepsModule
+  ],
+  declarations: [
+    PlayerStatsPageComponent,
+    PlayerDetailComponent,
+    AddPlayerComponent
+  ]
 })
 export class SoccerStatsFeaturePlayerStatsModule {}

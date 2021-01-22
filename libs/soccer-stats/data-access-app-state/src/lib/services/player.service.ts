@@ -19,4 +19,12 @@ export class PlayerService {
       this.http.get<Player[]>(`${this.baseUrl}${playersEndpoint}`)
     );
   }
+
+  addPlayer(player: string) {
+    return loadWithRetry(() =>
+      this.http.post<Player>(`${this.baseUrl}${playersEndpoint}`, {
+        name: player
+      })
+    );
+  }
 }

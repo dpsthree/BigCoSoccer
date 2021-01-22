@@ -3,7 +3,7 @@ import { ActionReducerMap } from '@ngrx/store';
 import { AppState } from '../state.types';
 
 import { userReducer } from './user.reducer';
-import { playersReducer, playersFetchReducer } from './player.reducer';
+import { playersReducer, playersFetchReducer, addPlayerStatusReducer } from './player.reducer';
 import {
   gamesFetchReducer,
   gamesReducer,
@@ -26,5 +26,6 @@ export const reducers: ActionReducerMap<AppState> = {
   addGameStatus: addGameStatusReducer,
   addPlayerToGameStatus: addPlayerToGameStatusReducer,
   addShotStatus: addShotStatusReducer,
-  addCardStatus: addCardStatusReducer
+  addCardStatus: addCardStatusReducer,
+  addPlayerStatus: addPlayerStatusReducer
 };
