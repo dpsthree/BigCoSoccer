@@ -1,1 +1,18 @@
-<p>player-name-editor works!</p>
+<h1 e2e="player-details-name">
+  <a
+    (click)="startEditingName()"
+    *ngIf="editing === false"
+    style="cursor: pointer"
+  >
+    {{ playerNameEdit.value }}
+  </a>
+  <mat-form-field *ngIf="editing === true">
+    <input
+      matInput
+      type="text"
+      [formControl]="playerNameEdit"
+      (blur)="save()"
+      e2e="name-change-control"
+    />
+  </mat-form-field>
+</h1>

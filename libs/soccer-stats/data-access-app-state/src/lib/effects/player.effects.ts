@@ -78,7 +78,7 @@ export class PlayerEffects {
 
   fetchPlayers = createEffect(() => {
     return this.actions.pipe(
-      ofType(markAddPlayerRequestSuccess, markDeletePlayerRequestSuccess),
+      ofType(markAddPlayerRequestSuccess, markDeletePlayerRequestSuccess, markChangePlayerNameComplete),
       switchMap(() => this.playersService.getPlayers()),
       map(requestUpdate => {
         switch (requestUpdate.status) {
