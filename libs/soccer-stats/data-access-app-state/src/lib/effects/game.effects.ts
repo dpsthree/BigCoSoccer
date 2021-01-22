@@ -38,7 +38,12 @@ import {
   markAddPlayerToGameRequestFailed,
   markAddPlayerToGameRequestInProgress,
   markAddPlayerToGameRequestRetrying,
-  markAddPlayerToGameRequestSuccess
+  markAddPlayerToGameRequestSuccess,
+  initiateAddShotRequest,
+  markAddShotRequestInProgress,
+  markAddShotRequestRetrying,
+  markAddShotRequestSuccess,
+  markAddShotRequestFailed
 } from '../actions/game.actions';
 import { combineLatest, NEVER, Observable, of } from 'rxjs';
 import {
@@ -128,7 +133,7 @@ export class GameEffects {
 
   refreshGameDetails = createEffect(() => {
     return this.actions.pipe(
-      ofType(markAddPlayerToGameRequestSuccess),
+      ofType(markAddPlayerToGameRequestSuccess, markAddShotRequestSuccess),
       switchMap(() => this.store.select(getSelectedGame).pipe(take(1))),
       switchMap(game => {
         if (game) {
@@ -230,6 +235,27 @@ export class GameEffects {
             return markAddPlayerToGameRequestSuccess();
           default:
             return markAddPlayerToGameRequestFailed();
+        }
+      })
+    );
+  });
+
+  addShot = createEffect(() => {
+    return this.actions.pipe(
+      ofType(initiateAddShotRequest),
+      mergeMap((shot) =>
+        this.gameService.addShot(shot)
+      ),
+      map(requestUpdate => {
+        switch (requestUpdate.status) {
+          case LoadResultStatus.IN_PROGRESS:
+            return markAddShotRequestInProgress();
+          case LoadResultStatus.RETRYING:
+            return markAddShotRequestRetrying();
+          case LoadResultStatus.SUCCESS:
+            return markAddShotRequestSuccess();
+          default:
+            return markAddShotRequestFailed();
         }
       })
     );

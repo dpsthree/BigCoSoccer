@@ -2,6 +2,7 @@ import { createReducer, on } from '@ngrx/store';
 import {
   addGameStatusMessages,
   addPlayerToGameStatusMessages,
+  addShotStatusMessages,
   deleteGameStatus,
   Game,
   gameFetchStatus,
@@ -10,6 +11,7 @@ import {
 import {
   ackAddGameStatus,
   ackAddPlayerToGameStatus,
+  ackAddShotStatus,
   ackDeleteGameStatus,
   markAddGameRequestFailed,
   markAddGameRequestInProgress,
@@ -19,6 +21,10 @@ import {
   markAddPlayerToGameRequestInProgress,
   markAddPlayerToGameRequestRetrying,
   markAddPlayerToGameRequestSuccess,
+  markAddShotRequestFailed,
+  markAddShotRequestInProgress,
+  markAddShotRequestRetrying,
+  markAddShotRequestSuccess,
   markDeleteGameRequestFailed,
   markDeleteGameRequestInProgress,
   markDeleteGameRequestRetrying,
@@ -97,6 +103,27 @@ export const addPlayerToGameStatusReducer = createReducer(
     () => addPlayerToGameStatusMessages.addPlayerToGameSuccess
   ),
   on(ackAddPlayerToGameStatus, () => addPlayerToGameStatusMessages.notStarted)
+);
+
+export const addShotStatusReducer = createReducer(
+  initialState.addShotStatus,
+  on(
+    markAddShotRequestInProgress,
+    () => addShotStatusMessages.addShotInProgress
+  ),
+  on(
+    markAddShotRequestRetrying,
+    () => addShotStatusMessages.addShotRetrying
+  ),
+  on(
+    markAddShotRequestFailed,
+    () => addShotStatusMessages.addShotFailed
+  ),
+  on(
+    markAddShotRequestSuccess,
+    () => addShotStatusMessages.addShotSuccess
+  ),
+  on(ackAddShotStatus, () => addShotStatusMessages.notStarted)
 );
 
 function resetGames(): Game[] {

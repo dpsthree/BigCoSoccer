@@ -81,3 +81,22 @@ export const markAddPlayerToGameRequestSuccess = createAction(
   'markAddPlayerToGameRequestSuccess'
 );
 export const ackAddPlayerToGameStatus = createAction('ackAddPlayerToGameStatus');
+
+export const initiateAddShotRequest = createAction(
+  'initiateAddShotRequest',
+  props<{game: string, player: string, assist: string | undefined, scored: boolean, minute: number}>()
+);
+
+export const markAddShotRequestInProgress = createAction(
+  'markAddShotRequestInProgress'
+);
+export const markAddShotRequestRetrying = createAction(
+  'markAddShotRequestRetrying'
+);
+export const markAddShotRequestFailed = createAction(
+  'markAddShotRequestFailed'
+);
+export const markAddShotRequestSuccess = createAction(
+  'markAddShotRequestSuccess'
+);
+export const ackAddShotStatus = createAction('ackAddShotStatus');

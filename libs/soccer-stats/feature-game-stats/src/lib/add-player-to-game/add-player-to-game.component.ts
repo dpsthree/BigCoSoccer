@@ -40,7 +40,7 @@ export class AddPlayerToGameComponent {
         )
       )
       .subscribe(() => {
-        this.store.dispatch(ackAddPlayerToGameStatus());
+        store.dispatch(ackAddPlayerToGameStatus());
         dialogRef.close();
       });
   }

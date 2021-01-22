@@ -7,7 +7,8 @@ import { loadWithRetry } from '@bsc/shared/util-async-helpers';
 import {
   cardEndpointLocation,
   gameEndpointLocation,
-  goalEndpointLocation
+  goalEndpointLocation,
+  shotEndpointLocation
 } from '../constants';
 import { Card, Game, ShotOnGoal } from '../state.types';
 
@@ -49,6 +50,10 @@ export class GameService {
         players: [...game.players, player]
       })
     );
+  }
+
+  addShot(shot: Partial<ShotOnGoal>){
+    return loadWithRetry(() =>this.http.post(`${this.baseUrl}${shotEndpointLocation}`, shot))
   }
 
   getShotsForGame(gameId: string) {

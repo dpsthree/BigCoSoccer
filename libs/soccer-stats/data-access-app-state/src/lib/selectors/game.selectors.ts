@@ -19,6 +19,9 @@ export const getAddGameStatus = (state: AppState) => state.addGameStatus;
 export const getAddPlayerToGameStatus = (state: AppState) =>
   state.addPlayerToGameStatus;
 
+export const getAddShotStatus = (state: AppState) =>
+  state.addShotStatus;
+
 function playersNotInAGame(
   game: GameWithEvents | undefined,
   players: Player[]
