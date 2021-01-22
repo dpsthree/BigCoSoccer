@@ -1,1 +1,19 @@
-<p>player-stats-page works!</p>
+<div class="list-container">
+  <mat-nav-list class="mat-elevation-z2">
+    <a
+      *ngFor="let player of players | async"
+      [routerLink]="player.id"
+      routerLinkActive="mat-list-item-active"
+      mat-list-item
+      e2e="player-list-item"
+    >
+      {{ player.name }}
+    </a>
+  </mat-nav-list>
+  <button mat-mini-fab (click)="addPlayer()" e2e="add-player">
+    <mat-icon>add</mat-icon>
+  </button>
+</div>
+<div>
+  <router-outlet></router-outlet>
+</div>
