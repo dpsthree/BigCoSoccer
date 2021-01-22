@@ -13,6 +13,9 @@ export interface AppState {
   addShotStatus: addShotStatusMessages;
   addCardStatus: addCardStatusMessages;
   addPlayerStatus: addPlayerStatusMessages;
+  selectedPlayer: PlayerWithStats | undefined;
+  deletePlayerStatus: deletePlayerStatus;
+
 }
 
 export interface Game {
@@ -54,7 +57,6 @@ export interface ShotOnGoal {
   scored: boolean;
   minute: number;
 }
-
 
 export enum gameFetchStatus {
   gamesLoading = 'gamesLoading',
@@ -120,6 +122,14 @@ export enum addCardStatusMessages {
   notStarted = 'notStarted',
 }
 
+export enum deletePlayerStatus {
+  deletePlayerPending = 'deletePlayerPending',
+  deletePlayerFinished = 'deletePlayerFinished',
+  deletePlayerFailed = 'deletePlayerFailed',
+  notStarted = 'notStarted'
+}
+
+
 export interface Player {
   id: string;
   name: string;
@@ -128,4 +138,11 @@ export interface Player {
 export enum cardTypes {
   red = 'red',
   yellow = 'yellow'
+}
+
+export interface PlayerWithStats extends Player {
+  games: Game[];
+  shotsOnGoal: ShotOnGoalWithNames[];
+  cards: Card[];
+  assists: ShotOnGoalWithNames[];
 }

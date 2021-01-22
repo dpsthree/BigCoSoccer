@@ -6,6 +6,7 @@ export * from './lib/reducers/reducers';
 export * from './lib/selectors/user.selectors';
 export * from './lib/selectors/player.selectors';
 export * from './lib/selectors/game.selectors';
+export * from './lib/selectors/shared.selectors';
 export * from './lib/state.types';
 export * from './lib/services/player.service';
 export * from './lib/services/game.service';

@@ -8,6 +8,7 @@ import { selectedPlayerIdRouteParamName } from './constants';
 import { PlayerDetailComponent } from './player-detail/player-detail.component';
 import { MaterialDepsModule } from './material-deps.module';
 import { AddPlayerComponent } from './add-player/add-player.component';
+import { PlayerNameEditorComponent } from './player-name-editor/player-name-editor.component';
 
 const routes: Routes = [
   {
@@ -32,7 +33,8 @@ const routes: Routes = [
   declarations: [
     PlayerStatsPageComponent,
     PlayerDetailComponent,
-    AddPlayerComponent
+    AddPlayerComponent,
+    PlayerNameEditorComponent
   ]
 })
 export class SoccerStatsFeaturePlayerStatsModule {}

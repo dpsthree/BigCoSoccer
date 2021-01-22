@@ -15,6 +15,7 @@ export const markGamesRequestSuccess = createAction(
   'markGamesRequestSuccess',
   props<{ games: Game[] }>()
 );
+
 export const selectedGameDetailsChanged = createAction(
   'selectedGameDetailsChanged',
   props<{ selectedGameWithEvents: GameWithEvents | undefined }>()

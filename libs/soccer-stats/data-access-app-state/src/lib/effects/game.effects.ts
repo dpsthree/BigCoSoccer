@@ -59,8 +59,8 @@ import {
   Player,
   ShotOnGoal
 } from '../state.types';
-import { getGames, getSelectedGame } from '../selectors/game.selectors';
-import { getPlayers } from '../selectors/player.selectors';
+import { getSelectedGame } from '../selectors/game.selectors';
+import { getPlayers, getGames } from '../selectors/shared.selectors';
 
 @Injectable()
 export class GameEffects {
@@ -89,7 +89,11 @@ export class GameEffects {
 
   fetchGames = createEffect(() => {
     return this.actions.pipe(
-      ofType(markDeleteGameRequestSuccess, markAddGameRequestSuccess, markAddPlayerToGameRequestSuccess ),
+      ofType(
+        markDeleteGameRequestSuccess,
+        markAddGameRequestSuccess,
+        markAddPlayerToGameRequestSuccess
+      ),
       switchMap(() => this.gameService.getGames()),
       map(requestUpdate => {
         switch (requestUpdate.status) {

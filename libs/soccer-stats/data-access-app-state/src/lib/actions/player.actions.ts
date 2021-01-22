@@ -1,5 +1,5 @@
 import { createAction, props } from '@ngrx/store';
-import { Player } from '../state.types';
+import { Player, PlayerWithStats } from '../state.types';
 
 export const markPlayersRequestInProgress = createAction(
   'markPlayersRequestInProgress'
@@ -21,7 +21,7 @@ export const requestInitialPlayerList = createAction(
 
 export const initiateAddPlayerRequest = createAction(
   'initiateAddPlayerRequest',
-  props<{player: string}>()
+  props<{ player: string }>()
 );
 
 export const markAddPlayerRequestInProgress = createAction(
@@ -36,6 +36,43 @@ export const markAddPlayerRequestFailed = createAction(
 export const markAddPlayerRequestSuccess = createAction(
   'markAddPlayerRequestSuccess'
 );
-export const ackAddPlayerStatus = createAction(
-  'ackAddPlayerStatus'
+export const ackAddPlayerStatus = createAction('ackAddPlayerStatus');
+
+export const selectedPlayerDetailsChanged = createAction(
+  'selectedPlayerDetailsChanged',
+  props<{ selectedPlayerWithStats: PlayerWithStats | undefined }>()
+);
+
+export const selectedPlayerIdChanged = createAction(
+  'selectedPlayerIdChanged',
+  props<{ playerId: string }>()
+);
+
+export const markDeletePlayerRequestInProgress = createAction(
+  'markdeletePlayerRequestInProgress'
+);
+export const markDeletePlayerRequestRetrying = createAction(
+  'markDeletePlayerRequestRetrying'
+);
+export const markDeletePlayerRequestFailed = createAction(
+  'markDeletePlayerRequestFailed'
+);
+export const markDeletePlayerRequestSuccess = createAction(
+  'markDeletePlayerRequestSuccess'
+);
+export const ackDeletePlayerStatus = createAction('ackDeletePlayerStatus');
+
+export const initiateDeletePlayerRequest = createAction(
+  'initiateDeletePlayerRequest',
+  props<{ playerId: string }>()
+);
+
+export const initiateChangePlayerNameRequest = createAction(
+  'initiateChangePlayerNameRequest',
+  props<{ playerId: string; name: string }>()
+);
+
+export const markChangePlayerNameComplete = createAction(
+  'markChangePlayerNameComplete',
+  props<{ playerId: string }>()
 );

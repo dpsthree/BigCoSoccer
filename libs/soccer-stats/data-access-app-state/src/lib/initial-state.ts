@@ -6,6 +6,7 @@ import {
   addShotStatusMessages,
   AppState,
   deleteGameStatus,
+  deletePlayerStatus,
   gameFetchStatus,
   playerFetchStatus
 } from './state.types';
@@ -23,4 +24,6 @@ export const initialState: AppState = {
   addShotStatus: addShotStatusMessages.notStarted,
   addCardStatus: addCardStatusMessages.notStarted,
   addPlayerStatus: addPlayerStatusMessages.notStarted,
+  selectedPlayer: undefined,
+  deletePlayerStatus: deletePlayerStatus.notStarted
 };

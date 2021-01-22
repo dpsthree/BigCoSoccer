@@ -1,10 +1,7 @@
 import { createSelector } from '@ngrx/store';
 
 import { Player, AppState, GameWithEvents } from '../state.types';
-
-import { getPlayers } from './player.selectors';
-
-export const getGames = (state: AppState) => state.games;
+import { getPlayers } from './shared.selectors';
 
 export const getSelectedGame = (state: AppState) => state.selectedGame;
 
@@ -19,11 +16,9 @@ export const getAddGameStatus = (state: AppState) => state.addGameStatus;
 export const getAddPlayerToGameStatus = (state: AppState) =>
   state.addPlayerToGameStatus;
 
-export const getAddShotStatus = (state: AppState) =>
-  state.addShotStatus;
+export const getAddShotStatus = (state: AppState) => state.addShotStatus;
 
-export const getAddCardStatus = (state: AppState) =>
-  state.addCardStatus;
+export const getAddCardStatus = (state: AppState) => state.addCardStatus;
 
 function playersNotInAGame(
   game: GameWithEvents | undefined,
