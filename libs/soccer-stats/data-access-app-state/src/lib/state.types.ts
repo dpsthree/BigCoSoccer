@@ -11,6 +11,7 @@ export interface AppState {
   addGameStatus: addGameStatusMessages;
   addPlayerToGameStatus: addPlayerToGameStatusMessages;
   addShotStatus: addShotStatusMessages;
+  addCardStatus: addCardStatusMessages;
 }
 
 export interface Game {
@@ -29,7 +30,7 @@ export interface GameWithEvents extends Game {
 
 export interface Card {
   id: string;
-  type: 'red' | 'yellow';
+  cardType: 'red' | 'yellow';
   game: string;
   player: string;
   minute: number;
@@ -90,6 +91,7 @@ export enum addPlayerToGameStatusMessages {
   addPlayerToGameSuccess = 'addPlayerToGameSuccess',
   notStarted = 'notStarted'
 }
+
 export enum addShotStatusMessages {
   addShotInProgress = 'addShotInProgress',
   addShotRetrying = 'addShotRetrying',
@@ -98,7 +100,21 @@ export enum addShotStatusMessages {
   notStarted = 'notStarted'
 }
 
+
+export enum addCardStatusMessages {
+  addCardInProgress = 'addCardInProgress',
+  addCardRetrying = 'addCardRetrying',
+  addCardFailed = 'addCardFailed',
+  addCardSuccess = 'addCardSuccess',
+  notStarted = 'notStarted',
+}
+
 export interface Player {
   id: string;
   name: string;
+}
+
+export enum cardTypes {
+  red = 'red',
+  yellow = 'yellow'
 }

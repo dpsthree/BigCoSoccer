@@ -8,7 +8,6 @@ import {
   cardEndpointLocation,
   gameEndpointLocation,
   goalEndpointLocation,
-  shotEndpointLocation
 } from '../constants';
 import { Card, Game, ShotOnGoal } from '../state.types';
 
@@ -53,7 +52,11 @@ export class GameService {
   }
 
   addShot(shot: Partial<ShotOnGoal>){
-    return loadWithRetry(() =>this.http.post(`${this.baseUrl}${shotEndpointLocation}`, shot))
+    return loadWithRetry(() =>this.http.post(`${this.baseUrl}${goalEndpointLocation}`, shot))
+  }
+
+  addCard(card: Partial<Card>){
+    return loadWithRetry(() =>this.http.post(`${this.baseUrl}${cardEndpointLocation}`, card))
   }
 
   getShotsForGame(gameId: string) {

@@ -1,6 +1,6 @@
 import { createAction, props } from '@ngrx/store';
 
-import { Game, GameWithEvents } from '../state.types';
+import { cardTypes, Game, GameWithEvents } from '../state.types';
 
 export const requestInitialGameList = createAction('requestInitialGameList');
 
@@ -65,7 +65,7 @@ export const ackAddGameStatus = createAction('ackAddGameStatus');
 
 export const initiateAddPlayerToGameRequest = createAction(
   'initiateAddPlayerToGameRequest',
-  props<{game: string, player: string}>()
+  props<{ game: string; player: string }>()
 );
 
 export const markAddPlayerToGameRequestInProgress = createAction(
@@ -80,11 +80,19 @@ export const markAddPlayerToGameRequestFailed = createAction(
 export const markAddPlayerToGameRequestSuccess = createAction(
   'markAddPlayerToGameRequestSuccess'
 );
-export const ackAddPlayerToGameStatus = createAction('ackAddPlayerToGameStatus');
+export const ackAddPlayerToGameStatus = createAction(
+  'ackAddPlayerToGameStatus'
+);
 
 export const initiateAddShotRequest = createAction(
   'initiateAddShotRequest',
-  props<{game: string, player: string, assist: string | undefined, scored: boolean, minute: number}>()
+  props<{
+    game: string;
+    player: string;
+    assist: string | undefined;
+    scored: boolean;
+    minute: number;
+  }>()
 );
 
 export const markAddShotRequestInProgress = createAction(
@@ -100,3 +108,27 @@ export const markAddShotRequestSuccess = createAction(
   'markAddShotRequestSuccess'
 );
 export const ackAddShotStatus = createAction('ackAddShotStatus');
+
+export const initiateAddCardRequest = createAction(
+  'initiateAddCardRequest',
+  props<{
+    game: string;
+    player: string;
+    cardType: cardTypes;
+    minute: number;
+  }>()
+);
+
+export const markAddCardRequestInProgress = createAction(
+  'markAddCardRequestInProgress'
+);
+export const markAddCardRequestRetrying = createAction(
+  'markAddCardRequestRetrying'
+);
+export const markAddCardRequestFailed = createAction(
+  'markAddCardRequestFailed'
+);
+export const markAddCardRequestSuccess = createAction(
+  'markAddCardRequestSuccess'
+);
+export const ackAddCardStatus = createAction('ackAddCardStatus');

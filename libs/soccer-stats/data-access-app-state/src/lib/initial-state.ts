@@ -1,4 +1,5 @@
 import {
+  addCardStatusMessages,
   addGameStatusMessages,
   addPlayerToGameStatusMessages,
   addShotStatusMessages,
@@ -18,5 +19,6 @@ export const initialState: AppState = {
   playerFetchStatus: playerFetchStatus.playersLoading,
   addGameStatus: addGameStatusMessages.notStarted,
   addPlayerToGameStatus: addPlayerToGameStatusMessages.notStarted,
-  addShotStatus: addShotStatusMessages.notStarted
+  addShotStatus: addShotStatusMessages.notStarted,
+  addCardStatus: addCardStatusMessages.notStarted
 };

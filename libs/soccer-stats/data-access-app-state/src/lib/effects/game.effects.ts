@@ -43,7 +43,12 @@ import {
   markAddShotRequestInProgress,
   markAddShotRequestRetrying,
   markAddShotRequestSuccess,
-  markAddShotRequestFailed
+  markAddShotRequestFailed,
+  markAddCardRequestInProgress,
+  markAddCardRequestRetrying,
+  markAddCardRequestSuccess,
+  markAddCardRequestFailed,
+  initiateAddCardRequest
 } from '../actions/game.actions';
 import { combineLatest, NEVER, Observable, of } from 'rxjs';
 import {
@@ -84,7 +89,7 @@ export class GameEffects {
 
   fetchGames = createEffect(() => {
     return this.actions.pipe(
-      ofType(markDeleteGameRequestSuccess, markAddGameRequestSuccess),
+      ofType(markDeleteGameRequestSuccess, markAddGameRequestSuccess, markAddPlayerToGameRequestSuccess ),
       switchMap(() => this.gameService.getGames()),
       map(requestUpdate => {
         switch (requestUpdate.status) {
@@ -133,7 +138,11 @@ export class GameEffects {
 
   refreshGameDetails = createEffect(() => {
     return this.actions.pipe(
-      ofType(markAddPlayerToGameRequestSuccess, markAddShotRequestSuccess),
+      ofType(
+        markAddPlayerToGameRequestSuccess,
+        markAddShotRequestSuccess,
+        markAddCardRequestSuccess
+      ),
       switchMap(() => this.store.select(getSelectedGame).pipe(take(1))),
       switchMap(game => {
         if (game) {
@@ -243,9 +252,7 @@ export class GameEffects {
   addShot = createEffect(() => {
     return this.actions.pipe(
       ofType(initiateAddShotRequest),
-      mergeMap((shot) =>
-        this.gameService.addShot(shot)
-      ),
+      mergeMap(shot => this.gameService.addShot(shot)),
       map(requestUpdate => {
         switch (requestUpdate.status) {
           case LoadResultStatus.IN_PROGRESS:
@@ -256,6 +263,25 @@ export class GameEffects {
             return markAddShotRequestSuccess();
           default:
             return markAddShotRequestFailed();
+        }
+      })
+    );
+  });
+
+  addCard = createEffect(() => {
+    return this.actions.pipe(
+      ofType(initiateAddCardRequest),
+      mergeMap(card => this.gameService.addCard(card)),
+      map(requestUpdate => {
+        switch (requestUpdate.status) {
+          case LoadResultStatus.IN_PROGRESS:
+            return markAddCardRequestInProgress();
+          case LoadResultStatus.RETRYING:
+            return markAddCardRequestRetrying();
+          case LoadResultStatus.SUCCESS:
+            return markAddCardRequestSuccess();
+          default:
+            return markAddCardRequestFailed();
         }
       })
     );

@@ -1,5 +1,6 @@
 import { createReducer, on } from '@ngrx/store';
 import {
+  addCardStatusMessages,
   addGameStatusMessages,
   addPlayerToGameStatusMessages,
   addShotStatusMessages,
@@ -9,10 +10,15 @@ import {
   GameWithEvents
 } from '../state.types';
 import {
+  ackAddCardStatus,
   ackAddGameStatus,
   ackAddPlayerToGameStatus,
   ackAddShotStatus,
   ackDeleteGameStatus,
+  markAddCardRequestFailed,
+  markAddCardRequestInProgress,
+  markAddCardRequestRetrying,
+  markAddCardRequestSuccess,
   markAddGameRequestFailed,
   markAddGameRequestInProgress,
   markAddGameRequestRetrying,
@@ -124,6 +130,27 @@ export const addShotStatusReducer = createReducer(
     () => addShotStatusMessages.addShotSuccess
   ),
   on(ackAddShotStatus, () => addShotStatusMessages.notStarted)
+);
+
+export const addCardStatusReducer = createReducer(
+  initialState.addCardStatus,
+  on(
+    markAddCardRequestInProgress,
+    () => addCardStatusMessages.addCardInProgress
+  ),
+  on(
+    markAddCardRequestRetrying,
+    () => addCardStatusMessages.addCardRetrying
+  ),
+  on(
+    markAddCardRequestFailed,
+    () => addCardStatusMessages.addCardFailed
+  ),
+  on(
+    markAddCardRequestSuccess,
+    () => addCardStatusMessages.addCardSuccess
+  ),
+  on(ackAddCardStatus, () => addCardStatusMessages.notStarted)
 );
 
 function resetGames(): Game[] {
