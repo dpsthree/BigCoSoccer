@@ -2,3 +2,20 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.mat-mini-fab {
+  float: right;
+  top: -20px;
+  right: 5px;
+}
+
+table {
+  width: 100%;
+}
+
+[mat-dialog-actions] {
+  button {
+    text-transform: uppercase;
+  }
+  direction: rtl;
+}
