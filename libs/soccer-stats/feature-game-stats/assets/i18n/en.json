@@ -1,0 +1,43 @@
+{
+  "addCardToGame": {
+    "red": "red",
+    "yellow": "yellow",
+    "Card Receiver": "Card Receiver",
+    "Type": "Type",
+    "Time": "Time",
+    "Add": "Add"
+  },
+  "addPlayerToGame": {
+    "Choose player": "Choose player",
+    "Add player": "Add player"
+  },
+  "addShotToGame": {
+    "Shot Taker": "Shot Taker",
+    "Assist": "Assist",
+    "Time": "Time",
+    "Scored": "Scored",
+    "A player can not assist themselves": "A player can not assist themselves",
+    "Add": "Add"
+  },
+  "addGame": {
+    "Enter name": "Enter name",
+    "Enter location": "Enter location",
+    "Enter game date": "Enter game date",
+    "Add": "Add"
+  },
+  "cardList": {
+    "Player": "Player",
+    "Color": "Color",
+    "Minute": "Minute"
+  },
+  "gameDetail": {
+    "Delete": "Delete"
+  },
+  "shotList": {
+    "Player": "Player",
+    "Assist": "Assist",
+    "Scored": "Scored",
+    "Minute": "Minute"
+
+  }
+}

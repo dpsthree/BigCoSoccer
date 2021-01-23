@@ -1,0 +1,11 @@
+{
+  "name": "@bsc/soccer-stats/feature-player-stats",
+  "version": "0.0.0",
+  "license": "MIT",
+  "i18n": [
+    {
+      "scope": "featurePlayerStats",
+      "path": "./assets/i18n"
+    }
+  ]
+}

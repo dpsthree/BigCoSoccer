@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { EffectsModule } from '@ngrx/effects';
 
+import { SharedUtilTranslationConfigModule } from '@bsc/shared/util-translation-config';
+
 import {
   GameEffects,
   PlayerEffects
@@ -40,7 +42,8 @@ const routes: Routes = [
     ReactiveFormsModule,
     RouterModule.forChild(routes),
     EffectsModule.forFeature([GameEffects, PlayerEffects]),
-    MaterialDepsModule
+    MaterialDepsModule,
+    SharedUtilTranslationConfigModule.forChild('featureGameStats')
   ],
   declarations: [
     GameStatsPageComponent,

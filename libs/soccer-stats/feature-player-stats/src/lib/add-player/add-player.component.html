@@ -1,33 +1,36 @@
-<div mat-dialog-content>
-  <mat-form-field>
-    <input
-      [formControl]="playerInput"
-      matInput
-      placeholder="Enter player name"
-      e2e="player-name-control"
-    />
-  </mat-form-field>
-</div>
-<div mat-dialog-actions>
-  <button
-    mat-button
-    (click)="save()"
-    [disabled]="
-      (addPlayerStatus | async) ===
-        addPlayerStatusMessages.addPlayerInProgress ||
-      (addPlayerStatus | async) === addPlayerStatusMessages.addPlayerRetrying ||
-      playerInput.invalid
-    "
-    e2e="submit-new-player"
-  >
-    add
-  </button>
-  <mat-spinner
-    *ngIf="
-      (addPlayerStatus | async) ===
-        addPlayerStatusMessages.addPlayerInProgress ||
-      (addPlayerStatus | async) === addPlayerStatusMessages.addPlayerRetrying
-    "
-    diameter="20"
-  ></mat-spinner>
-</div>
+<ng-container *transloco="let t; read: 'featurePlayerStats.addPlayer'">
+  <div mat-dialog-content>
+    <mat-form-field>
+      <input
+        [formControl]="playerInput"
+        matInput
+        [placeholder]="t('Enter player name')"
+        e2e="player-name-control"
+      />
+    </mat-form-field>
+  </div>
+  <div mat-dialog-actions>
+    <button
+      mat-button
+      (click)="save()"
+      [disabled]="
+        (addPlayerStatus | async) ===
+          addPlayerStatusMessages.addPlayerInProgress ||
+        (addPlayerStatus | async) ===
+          addPlayerStatusMessages.addPlayerRetrying ||
+        playerInput.invalid
+      "
+      e2e="submit-new-player"
+    >
+      {{t('Add')}}
+    </button>
+    <mat-spinner
+      *ngIf="
+        (addPlayerStatus | async) ===
+          addPlayerStatusMessages.addPlayerInProgress ||
+        (addPlayerStatus | async) === addPlayerStatusMessages.addPlayerRetrying
+      "
+      diameter="20"
+    ></mat-spinner>
+  </div>
+</ng-container>

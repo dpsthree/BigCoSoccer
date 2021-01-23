@@ -1,56 +1,58 @@
-<div mat-dialog-content>
-  <mat-form-field>
-    <mat-label>Card Receiver</mat-label>
-    <select
-      matNativeControl
-      [formControl]="cardForm.get('player')"
-      e2e="card-player-control"
+<ng-container *transloco="let t; read: 'featureGameStats.addCardToGame'">
+  <div mat-dialog-content>
+    <mat-form-field>
+      <mat-label>{{t('Card Receiver')}}</mat-label>
+      <select
+        matNativeControl
+        [formControl]="cardForm.get('player')"
+        e2e="card-player-control"
+      >
+        <option *ngFor="let player of game.players" [value]="player.id">
+          {{ player.name }}
+        </option>
+      </select>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>{{ t('Type')}}</mat-label>
+      <select
+        matNativeControl
+        class="card-types"
+        [formControl]="cardForm.get('cardType')"
+        e2e="card-type-control"
+      >
+        <option *ngFor="let type of cardtypes" [value]="type">
+          {{ t(type) }}
+        </option>
+      </select>
+    </mat-form-field>
+    <mat-form-field>
+      <input
+        type="number"
+        matInput
+        [placeholder]="t('Time')"
+        [formControl]="cardForm.get('minute')"
+      />
+    </mat-form-field>
+  </div>
+  <div mat-dialog-actions>
+    <button
+      mat-button
+      (click)="save()"
+      [disabled]="
+        (addCardStatus | async) === addCardStatusMessages.addCardInProgress ||
+        (addCardStatus | async) === addCardStatusMessages.addCardRetrying ||
+        cardForm.invalid
+      "
+      e2e="submit-new-card"
     >
-      <option *ngFor="let player of game.players" [value]="player.id">
-        {{ player.name }}
-      </option>
-    </select>
-  </mat-form-field>
-  <mat-form-field>
-    <mat-label>Type</mat-label>
-    <select
-      matNativeControl
-      class="card-types"
-      [formControl]="cardForm.get('cardType')"
-      e2e="card-type-control"
-    >
-      <option *ngFor="let type of cardtypes" [value]="type">
-        {{ type }}
-      </option>
-    </select>
-  </mat-form-field>
-  <mat-form-field>
-    <input
-      type="number"
-      matInput
-      placeholder="Time"
-      [formControl]="cardForm.get('minute')"
-    />
-  </mat-form-field>
-</div>
-<div mat-dialog-actions>
-  <button
-    mat-button
-    (click)="save()"
-    [disabled]="
-      (addCardStatus | async) === addCardStatusMessages.addCardInProgress ||
-      (addCardStatus | async) === addCardStatusMessages.addCardRetrying ||
-      cardForm.invalid
-    "
-    e2e="submit-new-card"
-  >
-    Add
-  </button>
-  <mat-spinner
-    *ngIf="
-      (addCardStatus | async) === addCardStatusMessages.addCardInProgress ||
-      (addCardStatus | async) === addCardStatusMessages.addCardRetrying
-    "
-    diameter="20"
-  ></mat-spinner>
-</div>
+      {{t('Add')}}
+    </button>
+    <mat-spinner
+      *ngIf="
+        (addCardStatus | async) === addCardStatusMessages.addCardInProgress ||
+        (addCardStatus | async) === addCardStatusMessages.addCardRetrying
+      "
+      diameter="20"
+    ></mat-spinner>
+  </div>
+</ng-container>

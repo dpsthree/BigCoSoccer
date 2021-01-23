@@ -1,17 +1,19 @@
+<ng-container *transloco="let t; read: 'featureGameStats.cardList'">
+
 <h2>Cards Given</h2>
 <table mat-table [dataSource]="cards" class="mat-elevation-z2">
   <ng-container matColumnDef="player">
-    <th mat-header-cell *matHeaderCellDef>Player</th>
+    <th mat-header-cell *matHeaderCellDef>{{t('Player')}}</th>
     <td mat-cell *matCellDef="let element">
       {{ element.playerName }}
     </td>
   </ng-container>
   <ng-container matColumnDef="color">
-    <th mat-header-cell *matHeaderCellDef>Color</th>
+    <th mat-header-cell *matHeaderCellDef>{{t('Color')}}</th>
     <td mat-cell *matCellDef="let element">{{ element.type }}</td>
   </ng-container>
   <ng-container matColumnDef="minute">
-    <th mat-header-cell *matHeaderCellDef>Minute</th>
+    <th mat-header-cell *matHeaderCellDef>{{t('Minute')}}</th>
     <td mat-cell *matCellDef="let element">{{ element.minute }}</td>
   </ng-container>
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
@@ -24,3 +26,4 @@
 <button mat-mini-fab color="accent" (click)="addCard()" e2e="add-card">
   <mat-icon>add</mat-icon>
 </button>
+</ng-container>

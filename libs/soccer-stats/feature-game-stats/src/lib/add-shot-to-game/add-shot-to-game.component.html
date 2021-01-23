@@ -1,62 +1,64 @@
-<div mat-dialog-content>
-  <mat-form-field>
-    <mat-label>Shot Taker</mat-label>
-    <select
-      matNativeControl
-      [formControl]="shotForm.get('player')"
-      e2e="shot-taker-control"
+<ng-container *transloco="let t; read: 'featureGameStats.addShotToGame'">
+  <div mat-dialog-content>
+    <mat-form-field>
+      <mat-label>{{ t('Shot Taker') }}</mat-label>
+      <select
+        matNativeControl
+        [formControl]="shotForm.get('player')"
+        e2e="shot-taker-control"
+      >
+        <option *ngFor="let player of this.game.players" [value]="player.id">
+          {{ player.name }}
+        </option>
+      </select>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>{{ t('Assist') }}</mat-label>
+      <select
+        matNativeControl
+        [formControl]="shotForm.get('assist')"
+        e2e="assist-control"
+      >
+        <option *ngFor="let player of this.game.players" [value]="player.id">
+          {{ player.name }}
+        </option>
+      </select>
+    </mat-form-field>
+    <mat-form-field>
+      <input
+        type="number"
+        matInput
+        [placeholder]="t('Time')"
+        [formControl]="shotForm.get('minute')"
+        e2e="minute-control"
+      />
+    </mat-form-field>
+    <mat-checkbox [formControl]="shotForm.get('scored')" e2e="scored-control">
+      {{ t('Scored') }}
+    </mat-checkbox>
+    <span *ngIf="shotForm.touched && shotForm.getError('cantAssistYourself')">
+      {{ t('A player can not assist themselves') }}
+    </span>
+  </div>
+  <div mat-dialog-actions>
+    <button
+      mat-button
+      (click)="save()"
+      [disabled]="
+        (addShotStatus | async) === addShotStatusMessages.addShotInProgress ||
+        (addShotStatus | async) === addShotStatusMessages.addShotRetrying ||
+        shotForm.invalid
+      "
+      e2e="submit-new-shot"
     >
-      <option *ngFor="let player of this.game.players" [value]="player.id">
-        {{ player.name }}
-      </option>
-    </select>
-  </mat-form-field>
-  <mat-form-field>
-    <mat-label>Assist</mat-label>
-    <select
-      matNativeControl
-      [formControl]="shotForm.get('assist')"
-      e2e="assist-control"
-    >
-      <option *ngFor="let player of this.game.players" [value]="player.id">
-        {{ player.name }}
-      </option>
-    </select>
-  </mat-form-field>
-  <mat-form-field>
-    <input
-      type="number"
-      matInput
-      placeholder="Time"
-      [formControl]="shotForm.get('minute')"
-      e2e="minute-control"
-    />
-  </mat-form-field>
-  <mat-checkbox [formControl]="shotForm.get('scored')" e2e="scored-control">
-    Scored
-  </mat-checkbox>
-  <span *ngIf="shotForm.touched && shotForm.getError('cantAssistYourself')">
-    A player can not assist themselves
-  </span>
-</div>
-<div mat-dialog-actions>
-  <button
-    mat-button
-    (click)="save()"
-    [disabled]="
-      (addShotStatus | async) === addShotStatusMessages.addShotInProgress ||
-      (addShotStatus | async) === addShotStatusMessages.addShotRetrying ||
-      shotForm.invalid
-    "
-    e2e="submit-new-shot"
-  >
-    Add
-  </button>
-  <mat-spinner
-    *ngIf="
-      (addShotStatus | async) === addShotStatusMessages.addShotInProgress ||
-      (addShotStatus | async) === addShotStatusMessages.addShotInProgress
-    "
-    diameter="20"
-  ></mat-spinner>
-</div>
+      {{ t('Add') }}
+    </button>
+    <mat-spinner
+      *ngIf="
+        (addShotStatus | async) === addShotStatusMessages.addShotInProgress ||
+        (addShotStatus | async) === addShotStatusMessages.addShotInProgress
+      "
+      diameter="20"
+    ></mat-spinner>
+  </div>
+</ng-container>

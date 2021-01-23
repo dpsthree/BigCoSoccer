@@ -1,0 +1,17 @@
+{
+  "addPlayer": {
+    "Enter player name": "Enter player name",
+    "Add": "Add"
+  },
+  "playerDetail": {
+    "Delete": "Delete",
+    "Game Name": "Game Name",
+    "Location": "Location",
+    "Date": "Date",
+    "Goals": "Goals",
+    "Shots": "Shots",
+    "Assists": "Assists",
+    "Yellow Card Received": "Yellow Card Received",
+    "Red Card Received": "Red Card Received"
+  }
+}

@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 
+import { SharedUtilTranslationConfigModule } from '@bsc/shared/util-translation-config';
+
 import { PlayerStatsPageComponent } from './player-stats-page/player-stats-page.component';
 import { selectedPlayerIdRouteParamName } from './constants';
 import { PlayerDetailComponent } from './player-detail/player-detail.component';
@@ -28,7 +30,8 @@ const routes: Routes = [
     CommonModule,
     RouterModule.forChild(routes),
     ReactiveFormsModule,
-    MaterialDepsModule
+    MaterialDepsModule,
+    SharedUtilTranslationConfigModule.forChild('featurePlayerStats')
   ],
   declarations: [
     PlayerStatsPageComponent,
