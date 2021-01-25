@@ -7,6 +7,7 @@ export const getAddPlayerStatus = (state: AppState) => state.addPlayerStatus;
 export const getSelectedPlayer = (state: AppState) => state.selectedPlayer;
 export const getDeletePlayerStatus = (state: AppState) =>
   state.deletePlayerStatus;
+export const getPlayersFetchStatus = (state: AppState) => state.playerFetchStatus;
 export const getGameBreakdownForSelectedPlayer = createSelector(
   getSelectedPlayer,
   player => {

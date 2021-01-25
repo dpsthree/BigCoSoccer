@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
 import {
+  delayWhen,
+  filter,
   map,
   mergeMap,
   switchMap,
@@ -55,12 +57,18 @@ import {
   AppState,
   Card,
   Game,
+  gameFetchStatus,
   GameWithEvents,
   Player,
+  playerFetchStatus,
   ShotOnGoal
 } from '../state.types';
-import { getSelectedGame } from '../selectors/game.selectors';
+import {
+  getGamesFetchedStatus,
+  getSelectedGame
+} from '../selectors/game.selectors';
 import { getPlayers, getGames } from '../selectors/shared.selectors';
+import { getPlayersFetchStatus } from '../selectors/player.selectors';
 
 @Injectable()
 export class GameEffects {
@@ -115,6 +123,18 @@ export class GameEffects {
       ofType(selectedGameIdChanged),
       switchMap(action =>
         of(action).pipe(
+          delayWhen(() => {
+            return combineLatest([
+              this.store
+                .select(getGamesFetchedStatus)
+                .pipe(filter(status => status === gameFetchStatus.gamesLoaded)),
+              this.store
+                .select(getPlayersFetchStatus)
+                .pipe(
+                  filter(status => status === playerFetchStatus.playersLoaded)
+                )
+            ]);
+          }),
           withLatestFrom(
             this.store.select(getGames),
             this.store.select(getPlayers)

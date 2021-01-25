@@ -11,6 +11,8 @@ import { PlayerDetailComponent } from './player-detail/player-detail.component';
 import { MaterialDepsModule } from './material-deps.module';
 import { AddPlayerComponent } from './add-player/add-player.component';
 import { PlayerNameEditorComponent } from './player-name-editor/player-name-editor.component';
+import { EffectsModule } from '@ngrx/effects';
+import { GameEffects, PlayerEffects } from '@bsc/soccer-stats/data-access-app-state';
 
 const routes: Routes = [
   {
@@ -30,6 +32,7 @@ const routes: Routes = [
     CommonModule,
     RouterModule.forChild(routes),
     ReactiveFormsModule,
+    EffectsModule.forFeature([GameEffects, PlayerEffects]),
     MaterialDepsModule,
     SharedUtilTranslationConfigModule.forChild('featurePlayerStats')
   ],
