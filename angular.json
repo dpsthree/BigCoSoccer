@@ -56,6 +56,33 @@
                   "maximumError": "10kb"
                 }
               ]
+            },
+            "e2e": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/soccer-stats/src/environments/environment.ts",
+                  "with": "apps/soccer-stats/src/environments/environment.e2e.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
             }
           }
         },
@@ -67,6 +94,9 @@
           "configurations": {
             "production": {
               "browserTarget": "soccer-stats:build:production"
+            },
+            "e2e": {
+              "browserTarget": "soccer-stats:build:e2e"
             }
           }
         },
@@ -105,7 +135,7 @@
           "options": {
             "cypressConfig": "apps/soccer-stats-e2e/cypress.json",
             "tsConfig": "apps/soccer-stats-e2e/tsconfig.e2e.json",
-            "devServerTarget": "soccer-stats:serve"
+            "devServerTarget": "soccer-stats:serve:e2e"
           },
           "configurations": {
             "production": {

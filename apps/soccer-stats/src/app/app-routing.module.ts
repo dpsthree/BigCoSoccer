@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { GuardsService } from '@bsc/soccer-stats/data-access-guards';
+import { environment } from '../environments/environment';
 
 const routes: Routes = [
   { path: '', redirectTo: 'games', pathMatch: 'full' },
@@ -18,7 +19,7 @@ const routes: Routes = [
       import('@bsc/soccer-stats/feature-game-stats').then(
         m => m.SoccerStatsFeatureGameStatsModule
       ),
-    canActivate: [GuardsService]
+    canActivate: environment.e2e ? [] : [GuardsService]
   },
   {
     path: 'players',
@@ -26,7 +27,7 @@ const routes: Routes = [
       import('@bsc/soccer-stats/feature-player-stats').then(
         m => m.SoccerStatsFeaturePlayerStatsModule
       ),
-    canActivate: [GuardsService]
+    canActivate: environment.e2e ? [] : [GuardsService]
   }
 ];
 
