@@ -28,7 +28,8 @@
     "workspace-generator": "nx workspace-generator",
     "dep-graph": "nx dep-graph",
     "help": "nx help",
-    "transloco:extract-scoped-libs": "transloco-scoped-libs"
+    "transloco:extract-scoped-libs": "transloco-scoped-libs",
+    "reset-sport-db": "node bin/reset-sport-db.js"
   },
   "private": true,
   "dependencies": {
